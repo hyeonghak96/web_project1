@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'assesment',
+    'board',
+    'instrouction',
+
+
 ]
 
 MIDDLEWARE = [
@@ -55,7 +61,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates') # 홈페이지 구성,공통 tamplates에 넣어줌
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,13 +84,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_pro_db', # 데이터베이스 명
-        'HOST': 'localhost', # 서버 IP
-        'PORT': '3306', # 포트번호
-        'USER': 'projectuser', # 사용자 ID
-        'PASSWORD': '1234' # 비밀번호
-
+    
     }
 }
 
