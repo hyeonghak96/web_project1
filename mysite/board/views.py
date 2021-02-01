@@ -8,7 +8,7 @@ from django.http import FileResponse
 from blog.forms import PostSearchForm
 import os
 from django.conf import settings
-from .models import Board, BoardAttachFile
+from .models import Board, BoardAttachFile, Album, Photo
 # Create your views here.
 
 # ListView
@@ -83,8 +83,25 @@ class BoardCreateView(LoginRequiredMixin, CreateView):
 
 class BoardUpdateView(OwnerOnlyMixin, UpdateView):
     model = Board
-    fields = ['title', 'slug', 'description', 'content', 'tags']
-    success_url = reverse_lazy('blog:index')
+    fields = ['title', 'description', 'content', 'tags']
+    success_url = reverse_lazy('board:index')
+
+    def form_valid(self, form):
+        delete_files = self.request.POST.getlist("delete_files")
+        for fid in delete_files:
+            file = BoardAttachFile.objects.get(id=int(fid))
+            file_path = os.path.join(settings.MEDIA_ROOT, str(file.upload_file))
+            os.remove(file_path)
+            file.delete()
+            
+        response = super().form_valid(form)
+
+        files = self.request.FILES.getlist("files")
+        for file in files:
+            attach_file = BoardAttachFile(post=self.object,filename = file.name,
+            size = file.size, content_type = file.content_type, upload_file = file)
+            attach_file.save()
+        return response
 
 class BoardDeleteView(OwnerOnlyMixin, DeleteView):
     model = Board
@@ -97,28 +114,6 @@ def download(request, id):
 
     return FileResponse(open(file_path, 'rb'))
 
-class BoardUpdateView(OwnerOnlyMixin, UpdateView):
-    model = Board
-    fields = ['title', 'description', 'content', 'tags']
-    success_url = reverse_lazy('board:index')
-
-    def form_valid(self, form):
-        delete_files = self.request.POST.getlist("delete_files")
-        for fid in delete_files: # fid는 문자열 타입임
-            file = BoardAttachFile.objects.get(id=int(fid))
-            file_path = os.path.join(settings.MEDIA_ROOT, str(file.upload_file))
-            os.remove(file_path) # 실제 파일 삭제
-            file.delete()        # 모델 삭제(테이블의 행 삭제
-            
-        response = super().form_valid(form)
-
-        files = self.request.FILES.getlist("files")
-        for file in files:
-            attach_file = BoardAttachFile(post=self.object,filename = file.name,
-            size = file.size, content_type = file.content_type, upload_file = file)
-            attach_file.save()
-        return response
-
 
 # 자세히보기 뷰(https://nachwon.github.io/django-12-post-detail/)
 def board_detail(request):
@@ -127,5 +122,14 @@ def board_detail(request):
         'board': board
     } 
     return render(request, 'board/board_detail.html', context)
+
+class AlbumLV(ListView):
+    model = Album
+
+class AlbumDV(DetailView):
+    model = Album
+
+class PhotoDV(DetailView):
+    model = Photo
 
     

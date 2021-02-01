@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
 
 from bookmark.views import BookmarkLV, BookmarkDV
 from mysite.views import HomeView, UserCreateView, UserCreateDoneTV
@@ -25,5 +28,6 @@ urlpatterns = [
     path('',HomeView.as_view(), name='home'),
     
 
-    path('tinymce/', include('tinymce.urls'))
-]
+    path('tinymce/', include('tinymce.urls')),
+    path('board/', include('board.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

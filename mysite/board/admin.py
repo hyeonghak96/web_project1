@@ -1,5 +1,5 @@
 from django.contrib import admin
-from board.models import Board
+from board.models import Board, Album, Photo
 
 @admin.register(Board)
 class BoardAdmin(admin.ModelAdmin):
@@ -13,4 +13,12 @@ class BoardAdmin(admin.ModelAdmin):
     def tag_list(self, obj):
         return ', '.join(o.name for o in obj.tags.all())
 
+# @admin.register(Album)
+# class AlbumAdmin(admin.ModelAdmin):
+#     inlines = (PhotoInline,)
+#     list_display = ('id', 'name', 'description')
+
+@admin.register(Photo)
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'upload_dt')
 # Register your models here.
