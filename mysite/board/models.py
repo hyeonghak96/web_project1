@@ -31,9 +31,9 @@ class Board(models.Model):
 
 
 class BoardAttachFile(models.Model):
-    post            = models.ForeignKey(Board, on_delete=models.CASCADE,
+    board            = models.ForeignKey(Board, on_delete=models.CASCADE,
                                         related_name="files",
-                                        verbose_name='Post', blank=True, null=True)
+                                        verbose_name='Board', blank=True, null=True)
     upload_file     = models.FileField(upload_to="%Y/%m/%d",
                                         null=True, blank=True, verbose_name='파일')
     filename        = models.CharField(max_length=64, null=True,

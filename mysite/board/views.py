@@ -40,7 +40,7 @@ class TaggedObjectLV(ListView):
 
 #--- FormView
 class SearchFormView(FormView):
-    form_class = PostSearchForm
+    form_class = BoardSearchForm
     template_name = 'blog/post_search.html'
 
     def form_valid(self, form):
@@ -100,7 +100,7 @@ def download(request, id):
 class BoardUpdateView(OwnerOnlyMixin, UpdateView):
     model = Board
     fields = ['title', 'description', 'content', 'tags']
-    success_url = reverse_lazy('blog:index')
+    success_url = reverse_lazy('board:index')
 
     def form_valid(self, form):
         delete_files = self.request.POST.getlist("delete_files")
@@ -121,11 +121,11 @@ class BoardUpdateView(OwnerOnlyMixin, UpdateView):
 
 
 # 자세히보기 뷰(https://nachwon.github.io/django-12-post-detail/)
-def post_detail(request):
-    post = Post.objects.first()
+def board_detail(request):
+    board = Board.objects.first()
     context = {
-        'post': post
+        'board': board
     } 
-    return render(request, 'blog/post_detail.html', context)
+    return render(request, 'board/board_detail.html', context)
 
     
