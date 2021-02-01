@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from bookmark.views import BookmarkLV, BookmarkDV
+from django.urls import path, include
+
+from mysite.views import HomeView, UserCreateView, UserCreateDoneTV
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',HomeView.as_view(), name='home')
 ]
