@@ -46,9 +46,13 @@ class PostAttachFile(models.Model):
     def __str__(self):
         return self.filename
 
+# 교안 장고 실전 9장 포토앱 참고
 class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     title = models.CharField('TITLE', max_length=30)
     description = models.TextField('Photo Description', blank=True)
     image = ThumbnailImageField('IMAGE', upload_to='photo/%Y/%m')
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
+
+
+# 자세히 보기 페이지(https://nachwon.github.io/django-12-post-detail/) 참고
