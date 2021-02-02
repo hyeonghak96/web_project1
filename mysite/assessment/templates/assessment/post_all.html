@@ -1,19 +1,56 @@
-<h1>Assessment List</h1>
-<br>
-{%for post in posts%}
- <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
- {{post.modify_dt|date:"N d, Y"}}
- <p>{{post.description}}</p>
-{% endfor %}
-<br>
-<div>
- <span>
- {% if page_obj.has_previous %}
- <a href="?page={{page_obj.previous_page_number}}">Prev</a>
- {% endif %}
- Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages}}
- {% if page_obj.has_next %}
- <a href="?page={{page_obj.next_page_number}}">Next</a>
- {% endif %}
- </span>
+
+
+
+<head>
+    <head> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> </head>
+
+
+</head>
+<style>
+    
+    .pencil {
+        position:absolute;
+        top:120px;
+        left:220px;
+    }
+
+    h2{ position:absolute;
+        top : 100px;
+        left :250px;
+        color:blue;
+    }
+
+    .table{
+        position:relative;
+        top:150px;
+        left:200px;
+    }
+
+
+     .table th {
+      color: #168;
+      background: #f0f6f9;
+      text-align: center;
+    }
+    .table th, .table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+</style>
+<div class ="pencil">
+<i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
 </div>
+<h2>성취도 평가</h2>
+
+
+
+<body> <div class="table"><table border="1" style="width:50%"> <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
+    {% for post in posts %}
+    <tr>
+    <td>{{post.title}}</td> <td>{{post.performance}}</td><td>{{post.performance_re}}</td> <td>{{post.writing}}</td><td>{{post.writing_re}}</td><td>{{post.attitude}}</td><td>{{post.Portfolio}}</td>
+    </tr>
+    {% endfor %}
+</div>
+
+
+   
