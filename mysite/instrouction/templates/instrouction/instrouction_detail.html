@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}instrouction_detail.html{% endblock %}
+
+    
+{% block content %}
+<div class ="row">
+    <div class = "col-md-2">
+        <h3><div class ="font-type-bold"></div>교육 소개</h3>
+        
+        <ul>
+            {% for instrouction in object_list %}
+                <li><a href="{% url 'instrouction:detail' instrouction.id %}">
+                    {{ instrouction.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class = "col-md-10">
+        <h3>{{ instrouction.contenthead }}</h3>
+            <ul>
+            <li>{{ instrouction.content }}</li>
+            </ul>
+
+        <a href="{% url 'instrouction:index' %}">목록으로</a>
+
+    </div>
+</div>
+{% endblock %}
