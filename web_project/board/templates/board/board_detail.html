@@ -1,0 +1,58 @@
+{% block title %}board_detail.html{% endblock %}
+{% block content %}
+
+<h2>{{object.title}}</h2>
+
+<p>
+    {%if object.get_previous %}
+        <a href="{{object.get_previous.get_absolute_url}}"
+            title="이전 글">prev</a>
+    {%endif%}
+
+    {%if object.get_next %}
+        <a href="{{object.get_next.get_absolute_url}}"
+            title="다음 글">next</a>
+    {%endif%}
+</p>
+<div class="text-right">작성자: {{board.owner}} / 조회수: {{board.hit}} /
+    수정일: {{ board.modify_dt|date:"Y년 m월 d일" }}</div>
+<div class="text-right my-3">
+    {% for file in board.files.all %}
+    <a href="{%url 'board:download' file.id%}" class="ml-4">
+        <i class="fas fa-download"></i>
+        {{file.filename}} ({{file.size | filesizeformat}}) </a>
+    {% endfor %}
+</div>
+{# <p>{{object.modify_dt | date:"Y-m-d"}}</p> #}
+{# <p>작성자: {{object.owner.username}}</p> #}
+<br>
+
+<div>
+{{board.content | safe}}
+</div>
+<br>
+{% if board.mainphoto %}
+    <img src ="{{board.mainphoto.url}}" alt=""height="600">
+    <br>
+{% endif %}
+{% if user == object.owner %}
+<div class="text-right">
+    <a href="{% url 'board:update' board.id %}" class="mr-3">
+        <i class="far fa-edit"></i> 수정</a>
+    <a href="{% url 'board:delete' board.id %}" class="text-danger mr-3">
+        <i class="fas fa-trash"></i> 삭제</a>
+</div>
+{% endif %}
+
+<div>
+    <b>TAGS</b> <i class="fas fa-tag"></i>
+    {% load taggit_templatetags2_tags %}
+    {% get_tags_for_object object as "tags" %}
+    {% for tag in tags %}
+    <a href="{% url 'board:tagged_object_list' tag.name %}">#{{tag.name}}</a>
+    {% endfor %}
+    &emsp;<a href="{% url 'board:tag_cloud' %}">
+        <span class="btn btn-info btn-sm">TagCloud</span> </a>
+</div>
+
+{% endblock %}
