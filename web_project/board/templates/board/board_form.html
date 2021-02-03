@@ -1,4 +1,3 @@
-{% extends "base.html" %}
 {% load widget_tweaks %}
 
 {% block title %}board_form.html{% endblock %}
@@ -21,13 +20,6 @@
             <div class="col-sm-5">
                 {{ form.title|add_class:"form-control"|attr:"autofocus" }}
             </div>
-        </div>
-        <div class="form-group row">
-            {{ form.slug|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-            <div class="col-sm-5">
-                {{ form.slug|add_class:"form-control"|attr:"readonly" }}
-            </div>
-            <small class="form-text text-muted">{{ form.slug.help_text }}</small>
         </div>
 
         <div class="form-group row">

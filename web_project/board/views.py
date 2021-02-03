@@ -60,9 +60,8 @@ class SearchFormView(FormView):
 
 class BoardCreateView(LoginRequiredMixin, CreateView):
     model = Board
-    fields = ['title', 'slug', 'description', 'content', 'tags']
-    initial = {'slug': 'auto-filling-do-not-input'}
-    success_url = reverse_lazy('blog:index')
+    fields = ['title', 'description', 'content', 'tags']
+    success_url = reverse_lazy('board:index')
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -84,7 +83,7 @@ class BoardCreateView(LoginRequiredMixin, CreateView):
 class BoardUpdateView(OwnerOnlyMixin, UpdateView):
     model = Board
     fields = ['title', 'description', 'content', 'tags']
-    success_url = reverse_lazy('board:index')
+    success_url = reverse_lazy('board_index.html')
 
     def form_valid(self, form):
         delete_files = self.request.POST.getlist("delete_files")
@@ -105,7 +104,7 @@ class BoardUpdateView(OwnerOnlyMixin, UpdateView):
 
 class BoardDeleteView(OwnerOnlyMixin, DeleteView):
     model = Board
-    success_url = reverse_lazy('blog:index')
+    success_url = reverse_lazy('board_index.html')
 
 
 def download(request, id):
