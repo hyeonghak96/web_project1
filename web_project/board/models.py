@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 from tinymce.models import HTMLField
 from taggit.managers import TaggableManager
-from django.utils.text import slugify
 
 # Create your models here.
 
@@ -52,4 +51,15 @@ class BoardAttachFile(models.Model):
 
 
 
-# 자세히 보기 페이지(https://nachwon.github.io/django-12-post-detail/) 참고
+# 댓글 기능
+# class Comment(models.Model):
+#     author = models.ForeignKey(User, on_delete=models.CASCADE)
+#     content = models.TextField()
+#     create_date = models.DateTimeField()
+#     modify_date = models.DateTimeField(null=True, blank=True)
+#     question = models.ForeignKey(Question, null=True, blank=True, on_delete=models.CASCADE)
+#     answer = models.ForeignKey(Answer, null=True, blank=True, on_delete=models.CASCADE)
+
+# 게시판 이미지 추가 링크(https://wikidocs.net/91424)
+# 댓글 기능 링크 1(https://wikidocs.net/71655)
+# 댓글 기능 링크 2(https://fabl1106.github.io/django/2019/05/16/Django-22.-%EC%9E%A5%EA%B3%A0-%EB%8C%93%EA%B8%80-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0(%ED%95%A8%EC%88%98%ED%98%95-%EB%B7%B0).html)
