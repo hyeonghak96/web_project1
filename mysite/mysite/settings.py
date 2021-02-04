@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'assessment.apps.AssessmentConfig', # 추가
     # 'board',
     # 'instrouction',
-    'user.apps.UserConfig', #추가
+    'account', #추가
 
 
 ]
@@ -137,12 +137,12 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AUTH_USER_MODEL = 'user.User'
-USERNAME_FIELD = 'email'
-REQUIRED_FIELDS = ['name']
+AUTH_USER_MODEL = 'account.User'
+
 
 
 # 로그인 관련 URL 디폴트 값

@@ -14,9 +14,9 @@
  {% endif %}
  <form action="." method="post" class="card pt-4">{% csrf_token %}
     <div class="form-group row">
-    {{ form.username| add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
+    {{ form.email| add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
     <div class="col-sm-5">
-    {{ form.username|add_class:"form-control"|attr:"autofocus" }}
+    {{ form.email|add_class:"form-control"|attr:"autofocus" }}
     </div>
     </div>
     <div class="form-group row">
@@ -31,7 +31,31 @@
     {{ form.password2|add_class:"form-control" }}
     </div>
     </div>
-        
+
+    <div class="form-group row">
+    {{ form.date_of_birth|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
+    <div class="col-sm-5">
+    {{ form.date_of_birth|add_class:"form-control" }}
+        </div>
+        </div>
+    <div class="form-group row">    
+    {{ form.phone_number|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
+    <div class="col-sm-5">
+    {{ form.phone_number|add_class:"form-control" }}
+            </div>
+            </div>
+    <div class="form-group row">    
+    {{ form.address|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
+    <div class="col-sm-5">
+    {{ form.address|add_class:"form-control" }}
+            </div>
+            </div>
+                
+    
+            
+    
+
+    
 
     
     <div class="form-group">
