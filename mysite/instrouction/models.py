@@ -5,10 +5,12 @@ from django.db import models
 
 class Instrouction(models.Model):
     title = models.CharField('TITLE', max_length =100, blank=True)
-    contenthead = models.CharField('CONTENTHEAD', max_length=100, blank=True)
-    content = models.TextField('CONTENT', null=True)
 
-    
+
+    # owner = models.ForeignKey(User, on_delete= models.CASCADE, blank=True, null=True)
+    # auth_user에서 상속받는다
+
 
     def __str__(self):
         return self.title
+

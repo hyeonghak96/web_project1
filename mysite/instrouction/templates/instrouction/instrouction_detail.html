@@ -6,24 +6,39 @@
 {% block content %}
 <div class ="row">
     <div class = "col-md-2">
-        <h3><div class ="font-type-bold"></div>교육 소개</h3>
+        {% include 'instrouction/instrouction_base.html' %}
         
-        <ul>
-            {% for instrouction in object_list %}
-                <li><a href="{% url 'instrouction:detail' instrouction.id %}">
-                    {{ instrouction.title }}</a></li>
-            {% endfor %}
-        </ul>
+      
     </div>
 
     <div class = "col-md-10">
-        <h3>{{ instrouction.contenthead }}</h3>
-            <ul>
-            <li>{{ instrouction.content }}</li>
-            </ul>
+        <h3>{{ instrouction.title}}</h3>
+            <br>
+<pre>
+{{ instrouction.contenthead }}
+
+{{ instrouction.content  }}
+
+{{ instrouction.content2 }}
+
+{{ instrouction.content3 }}
+
+{{ instrouction.content4 }}
+
+{{ instrouction.content5 }}
+
+{{ instrouction.content6 }}
+
+
+
+    </pre>
+            
+
+            
 
         <a href="{% url 'instrouction:index' %}">목록으로</a>
 
     </div>
 </div>
 {% endblock %}
+
