@@ -1,14 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView, TemplateView, FormView, CreateView, UpdateView, DeleteView
 from django.db.models import Q, F
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from mysite.views import OwnerOnlyMixin
 from django.http import FileResponse
-from .forms import BoardSearchForm
+from .forms import BoardSearchForm, CommentForm
 import os
 from django.conf import settings
 from .models import Board, BoardAttachFile
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
+
 # Create your views here.
 
 # ListView
@@ -106,6 +109,20 @@ class BoardDeleteView(OwnerOnlyMixin, DeleteView):
     model = Board
     success_url = reverse_lazy('board_index.html')
 
+class CommentCreateView:
+    
+    def comment(request, board_id):
+
+        if request.method == "BOARD":
+            comment_form = CommentForm(request.BOARD)
+            comment_form.instance.author_id = request.user.id
+            comment_form.instance.board_id = board_id
+            if comment_form.is_valid():
+                comment = comment_form.save()
+
+        return HttpResponseRedirect(reverse_lazy('board:detail', args=[board_id]))
+
+
 
 def download(request, id):
     file = BoardAttachFile.objects.get(id=id)
@@ -114,14 +131,36 @@ def download(request, id):
     return FileResponse(open(file_path, 'rb'))
 
 
-# 자세히보기 뷰(https://nachwon.github.io/django-12-post-detail/)
-# def board_detail(request):
-#     board = Board.objects.first()
-#     context = {
-#         'board': board
-#     } 
-#     return render(request, 'board/board_detail.html', context)
+def view(request, no=0, page=1):
+    # 존재하는 게시글이 없을 경우 return
+    if no == 0:
+        return HttpResponseRedirect('list')
+
+    board = Board.objects.filter(id=no)
+
+    data = {
+        'board':board[0],
+        'page':page,
+    }
+
+    response = render(request, 'board/board_detail.html', data)
+    if request.session.get('authUser') is None:
+        cookie_name = 'hit'
+    else:
+        cookie_name = f'hit:{request.session["authUser"]["id"]}'
+
+
+    if request.COOKIES.get(cookie_name) is not None:
+        cookies = request.COOKIES.get(cookie_name)
+        cookies_list = cookies.split('|')
+        if str(no) not in cookies_list:
+            board.update(hit=F('hit') + 1)
+            return response
+    else:
+        board.update(hit=F('hit') + 1)
+        return response
+
+    return render(request, 'board/board_detail.html', data)
 
 
 
-    

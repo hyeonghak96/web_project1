@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from tinymce.models import HTMLField
 from taggit.managers import TaggableManager
+from account.models import User
 
 # Create your models here.
 
@@ -52,13 +53,16 @@ class BoardAttachFile(models.Model):
 
 
 # 댓글 기능
-# class Comment(models.Model):
-#     author = models.ForeignKey(User, on_delete=models.CASCADE)
-#     content = models.TextField()
-#     create_date = models.DateTimeField()
-#     modify_date = models.DateTimeField(null=True, blank=True)
-#     question = models.ForeignKey(Question, null=True, blank=True, on_delete=models.CASCADE)
-#     answer = models.ForeignKey(Answer, null=True, blank=True, on_delete=models.CASCADE)
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    board = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='comments')
+    text = models.TextField()
+    create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return (self.author.username if self.author else "무명")+ "의 댓글"
+
 
 # 게시판 이미지 추가 링크(https://wikidocs.net/91424)
 # 댓글 기능 링크 1(https://wikidocs.net/71655)

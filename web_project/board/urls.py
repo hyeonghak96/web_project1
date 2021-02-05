@@ -1,5 +1,7 @@
 from django.urls import path, re_path
 from .views import *
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name = 'board'
 
@@ -13,5 +15,6 @@ urlpatterns = [
     path('<int:pk>/update/', BoardUpdateView.as_view(), name='update'),
     path('<int:pk>/delete', BoardDeleteView.as_view(), name='delete'),
     path('download/<int:id>', download, name='download'),
+    path('comment/<int:id>', BoardDV.as_view(), name="comment"),
 
-]
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -17,13 +17,22 @@ from os import stat
 from django.contrib import admin
 from django.urls import path, include
 
-from django.conf.urls.static import static
-from django.conf import settings
+
+from django.contrib import admin
+from mysite.views import HomeView, UserCreateView, UserCreateDoneTV
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path('account/', include('django.contrib.auth.urls')), # 로그인, 로그아웃, 비밀번호 변경 등 담당
+    path('account/register/', UserCreateView.as_view(), name='register'), 
+    path('account/register/done/', UserCreateDoneTV.as_view(),name='register_done'), # 회원 가입 및 처리
+
+
+    path('assessment/', include('assessment.urls')), #평가 url
 
     path('tinymce/', include('tinymce.urls')),
     path('board/', include('board.urls')),
-]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+]

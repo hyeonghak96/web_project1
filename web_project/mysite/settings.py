@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'widget_tweaks',
+    'widget_tweaks', # 로그인 관련 앱
     'tinymce',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
-    'board'
+    'assessment.apps.AssessmentConfig',
+    'account',
+    'board',
 ]
 
 MIDDLEWARE = [

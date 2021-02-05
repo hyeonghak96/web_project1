@@ -1,16 +1,6 @@
-{% extends "base.html" %}
 {% block title %}board_detail.html{% endblock %}
 {% block content %}
 
-<head>
-    <meta property="og:title" content="test"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="http://rootree.net"/>
-    <meta property="og:description" content="This is a description."/>
-    <meta property="og:image" content="http://img.jpg"/>
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="627" />
-</head>
 
 <h2>{{object.title}}</h2>
 
@@ -54,6 +44,30 @@
         <i class="fas fa-trash"></i> 삭제</a>
 </div>
 {% endif %}
+
+
+
+<form action="{% url 'board:comment' object.id %}" method="BOARD">
+    {% csrf_token %}
+
+
+    <input type="submit" value="Comment" class="btn btn-outline-primary">
+
+</form>
+
+<table class="table table-striped">
+    {% for comment in comments %}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><a href="{ % url 'board:comment_delete' comment.id % }">삭제하기</a></td>
+        <td><a href="{ % url 'board:comment_update' comment.id % }">수정하기</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
 
 <div>
     <b>TAGS</b> <i class="fas fa-tag"></i>
