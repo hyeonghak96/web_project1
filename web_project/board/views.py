@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from mysite.views import OwnerOnlyMixin
 from django.http import FileResponse
-from .forms import BoardSearchForm, CommentForm
+from .forms import BoardSearchForm # , CommentForm
 import os
 from django.conf import settings
 from .models import Board, BoardAttachFile
@@ -109,18 +109,18 @@ class BoardDeleteView(OwnerOnlyMixin, DeleteView):
     model = Board
     success_url = reverse_lazy('board_index.html')
 
-class CommentCreateView:
+# class CommentCreateView:
     
-    def comment(request, board_id):
+#     def comment(request, board_id):
 
-        if request.method == "BOARD":
-            comment_form = CommentForm(request.BOARD)
-            comment_form.instance.author_id = request.user.id
-            comment_form.instance.board_id = board_id
-            if comment_form.is_valid():
-                comment = comment_form.save()
+#         if request.method == "BOARD":
+#             comment_form = CommentForm(request.BOARD)
+#             comment_form.instance.author_id = request.user.id
+#             comment_form.instance.board_id = board_id
+#             if comment_form.is_valid():
+#                 comment = comment_form.save()
 
-        return HttpResponseRedirect(reverse_lazy('board:detail', args=[board_id]))
+#         return HttpResponseRedirect(reverse_lazy('board:detail', args=[board_id]))
 
 
 
