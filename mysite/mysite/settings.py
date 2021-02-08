@@ -95,7 +95,7 @@ DATABASES = {
         'HOST': 'localhost',    # 서버 IP
         'PORT': '3306',         #포트 번호
         'USER': 'projectuser',      # 사용자 ID
-        'PASSWORD': '123456'    # 비밀번호
+        'PASSWORD': '1234'    # 비밀번호
     
     }
 }

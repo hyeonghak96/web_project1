@@ -1,77 +1,87 @@
+  {% extends "base.html" %}
 
-
-
+ {% block content %}
 <style>
-.table td{
-    text-align:center;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
+    table{
+        position : relative;
+        top : 50px;
+        left : 100px;
+        
 
-}
-.pointer{
+ }    
 
-    color:blue;
-    font-weight:900;
-}
- th{
-    font-size: 16px;
-    color: #0d47a1;
+    .pointer{
+        color:blue;
+        font-weight:bold;
+        text-align:left;    
+    }
 
-}
+    th,td {
+        color: #0d47a1;
+        font-size: 16px;
+        text-align : center;
+        
+
+    }
+
+    .btn-success{
+        background-color: #00c851!important;
+        float:right;
+    }
+    
+    .highlight{
+        position:relative;
+        left: 100px;
+        color:#0d47a1;
+        font-size : 30px;
+        
+    }
 
 </style>
 
-
-
-
-
-
-    <body> <talbe class="type02"><table border="1" style="width:70%">
-
-
-
-      
-         <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
-        
-        
-        
-         <td class="pointer">인터페이스 개발</td> </div>{% for interface in user.interface_set.all %}
-    <td>{{interface.performance}}</td> <td>{{interface.performance_re}}</td><td>{{interface.writing}}</td><td>{{interface.writing_re}}</td><td>{{interface.attitude}}</td><td>{{interface.Portfolio}}</td>
-    {% endfor %}
-    
-    
-    <tr>   
-    <td class="pointer">인터페이스 개발 프로젝트</td>{% for interpro in user.interface_project_set.all %}
-    <td>{{interpro.performance}}</td> <td>{{interpro.performance_re}}</td><td>{{interpro.writing}}</td><td>{{interpro.writing_re}}</td><td>{{interpro.attitude}}</td><td>{{interpro.Portfolio}}</td>
-    {% endfor %}
-    </tr>
- 
-    <tr>
-    <td class="pointer">엣지 디바이스 프로젝트</td>
-    {% for edge in user.edge_device_set.all %}
-    <td>{{edge.performance}}</td> <td>{{edge.performance_re}}</td> <td>{{edge.writing}}</td> <td>{{edge.writing_re}}</td> <td>{{edge.attitude}}</td> <td>{{edge.Portfolio}}</td>
-    {% endfor %}
-    </tr>   
-    <tr>
-        <td class="pointer">게이트 웨이 디바이스 프로젝트</td>
-        {% for gateway in user.edge_device_set.all %}
-        <td>{{gateway.performance}}</td> <td>{{gateway.performance_re}}</td> <td>{{gateway.writing}}</td> <td>{{gateway.writing_re}}</td> <td>{{gateway.attitude}}</td> <td>{{gateway.Portfolio}}</td>
-        {% endfor %}
-    </tr> 
-    <tr>
-        <td class="pointer">Iot 프로젝트</td>
-        {% for iot in user.iot_project_set.all %}
-        <td>{{iot.performance}}</td> <td>{{iot.performance_re}}</td> <td>{{iot.writing}}</td> <td>{{iot.writing_re}}</td> <td>{{iot.attitude}}</td> <td>{{iot.Portfolio}}</td>
-        {% endfor %}
-    </tr>
-    <tr>
-        <td class="pointer">융합 프로젝트</td>
-        {% for mix in user.mix_project_set.all %}
-        <td>{{mix.performance}}</td> <td>{{mix.performance_re}}</td> <td>{{mix.writing}}</td> <td>{{mix.writing_re}}</td> <td>{{mix.attitude}}</td> <td>{{mix.Portfolio}}</td>
-        {% endfor %}
-    </tr>
-</table>
+<div class="highlight">
+<i class="fas fa-highlighter"> 성취도 평가</i>
 </div>
 
-</body>
-
+    <body>
+        
+        <div class="table"><table border="0" style="width:80%"> <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
+        <td div class= "pointer"> <i class="fas fa-chalkboard-teacher"></i> 인터페이스 개발 </td>
+         {% for interface in user.interface_set.all %}
+         <td>{{interface.performance}}</td> <td>{{interface.performance_re}}</td><td>{{interface.writing}}</td><td>{{interface.writing_re}}</td><td>{{interface.attitude}}</td><td>{{interface.Portfolio}}</td>
+         {% endfor %}
+         <tr>   
+         <td div class="pointer"><i class="fas fa-chalkboard-teacher"></i>  인터페이스 개발 프로젝트 <button type="button" class="btn btn-success">포트폴리오</button>
+         </td>{% for interpro in user.interface_project_set.all %}
+         <td>{{interpro.performance}}</td> <td>{{interpro.performance_re}}</td><td>{{interpro.writing}}</td><td>{{interpro.writing_re}}</td><td>{{interpro.attitude}}</td><td>{{interpro.Portfolio}}</td>
+         {% endfor %}
+         </tr>
+         <tr>
+         <td div class= "pointer"> <i class="fas fa-chalkboard-teacher"></i> 엣지 디바이스 제어</td>
+         {% for edge in user.edge_device_set.all %}
+         <td>{{edge.performance}}</td> <td>{{edge.performance_re}}</td> <td>{{edge.writing}}</td> <td>{{edge.writing_re}}</td> <td>{{edge.attitude}}</td> <td>{{edge.Portfolio}}</td>
+         {% endfor %}
+         </tr>   
+         <tr>
+             <td div class="pointer"> <i class="fas fa-chalkboard-teacher"></i> 게이트 웨이 디바이스 제어</td>
+             {% for gateway in user.gateway_device_set.all %}
+             <td>{{gateway.performance}}</td> <td>{{gateway.performance_re}}</td> <td>{{gateway.writing}}</td> <td>{{gateway.writing_re}}</td> <td>{{gateway.attitude}}</td> <td>{{gateway.Portfolio}}</td>
+             {% endfor %}
+         </tr> 
+         <tr>
+             <td div class="pointer"> <i class="fas fa-chalkboard-teacher"></i> Iot 프로젝트 <button type="button" class="btn btn-success">포트폴리오</button>
+             </td>
+             {% for iot in user.iot_project_set.all %}
+             <td>{{iot.performance}}</td> <td>{{iot.performance_re}}</td> <td>{{iot.writing}}</td> <td>{{iot.writing_re}}</td> <td>{{iot.attitude}}</td> <td>{{iot.Portfolio}}</td>
+             {% endfor %}
+         </tr>
+         <tr>
+             <td div class="pointer"> <i class="fas fa-chalkboard-teacher"></i> 융합 프로젝트 <button type="button" class="btn btn-success">포트폴리오</button>
+             </td>
+             {% for mix in user.mix_project_set.all %}
+             <td>{{mix.performance}}</td> <td>{{mix.performance_re}}</td> <td>{{mix.writing}}</td> <td>{{mix.writing_re}}</td> <td>{{mix.attitude}}</td> <td>{{mix.Portfolio}}</td>
+             {% endfor %}
+         </tr>
+     
+     </div>
+{% endblock %}
