@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <span class="navbar-brand mx-5 mb-0 font-weight-bold font-italic">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top mx-0 mb-0">
+    <span class="navbar-brand mx-0 mb-0 font-weight-bold font-italic">
         menu </span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
@@ -7,17 +7,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item mx-1 btn btn-primary">
-                <a class="nav-link text-white" href="{% url 'home' %}"><i class="fas fa-home"></i>Home</a>
-            </li>
-           
-            <li class="nav-item mx-1 btn btn-primary">
-                <a class="nav-link text-white" href="{% url 'assessment:index' %}"><i class="fas fa-pencil-alt"></i>평가</a>
+                <a class="nav-link text-white" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
             </li>
             <li class="nav-item mx-1 btn btn-primary">
-                <a class="nav-link text-white" href="#"><i class="fas fa-list"></i>기타</a>
+                <a class="nav-link text-white" href="{% url 'instrouction:index' %}"><i class="fas fa-chalkboard-teacher"></i> 훈련소개</a>
+            </li>
+            <li class="nav-item mx-1 btn btn-primary">
+                <a class="nav-link text-white" href="#"><i class="fas fa-pencil-alt"></i> 평가</a>
+            </li>
+            <li class="nav-item mx-1 btn btn-primary">
+                <a class="nav-link text-white" href="#"><i class="fas fa-list"></i> 기타</a>
             </li>
             <li class="nav-item dropdown mx-1 btn btn-primary">
-                <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i>목록</a>
+                <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i> 목록</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Admin</a>
                     <div class="dropdown-divider"></div>
@@ -26,9 +28,9 @@
                 </div>
             </li>
         </ul>
-        <!-- <form class="form-inline my-2" action="" method="post"> {% csrf_token %}
+        <form class="form-inline my-2" action="" method="post"> {% csrf_token %}
             <input class="form-control mr-sm-2" type="search" placeholder="global search" name="search_word">
-        </form> -->
+        </form>
     
 
         <ul class="navbar-nav ml-5 mr-5">
@@ -38,18 +40,23 @@
                     <i class="fas fa-user"></i>
                     {{user.username }} </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                    <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="#">Change Password</a>
                 </div>
                 {% else %}
                 <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
                     <i class="fas fa-user"></i>Enter</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-                    <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                    <a class="dropdown-item" href="#">Login</a>
+                    <a class="dropdown-item" href="#">Register</a>
                 </div>
                 {% endif %}
             </li>
         </ul>    
     </div>
+    
 </nav>
+<div class ="jumbotron mb-5 ">
+    <h3>E-ncs 교육</h3>
+    <strong class ="font-weight-bold float-right"><i class="fas fa-graduation-cap "></i>[디지털 핵심 실무인재양성] 프로젝트형 IOT 서비스 개발(유형2)_2차수</strong>
+</div>

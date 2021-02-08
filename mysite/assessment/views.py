@@ -10,4 +10,3 @@ class PostLV(ListView):
 # DetailView
 class PostDV(DetailView):
  model = Post
-
