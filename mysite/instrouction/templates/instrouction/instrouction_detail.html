@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}instrouction_detail.html{% endblock %}
+
+    
+{% block content %}
+<div class ="row">
+    <div class = "col-md-2">
+        {% include 'instrouction/instrouction_base.html' %}
+        
+      
+    </div>
+
+    <div class = "col-md-10">
+        <h3>{{ instrouction.title}}</h3>
+            <br>
+<pre>
+{{ instrouction.contenthead }}
+
+{{ instrouction.content  }}
+
+{{ instrouction.content2 }}
+
+{{ instrouction.content3 }}
+
+{{ instrouction.content4 }}
+
+{{ instrouction.content5 }}
+
+{{ instrouction.content6 }}
+
+
+
+    </pre>
+            
+
+            
+
+        <a href="{% url 'instrouction:index' %}">목록으로</a>
+
+    </div>
+</div>
+{% endblock %}
+

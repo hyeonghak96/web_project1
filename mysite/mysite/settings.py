@@ -26,7 +26,7 @@ SECRET_KEY = '@camfbcv@+!$dgq2c1-3jg#rrcs2i6rfnw)ofnweu*-ol2a710'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.30.1.58', '127.0.0.1','localhost']
 
 
 # Application definition
@@ -39,8 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 'django.contrib.auth.models.User',
     'widget_tweaks', # 로그인 관련 앱
+    'assessment.apps.AssessmentConfig', # 추가
+    # 'board',
+    # 'instrouction',
+    'account', #추가
     'tinymce',
+    'instrouction',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
     'assessment.apps.AssessmentConfig',
@@ -84,7 +90,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+       'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_pro_db', # 데이터베이스 명
         'HOST': 'localhost', # 서버 IP
         'PORT': '3306', # 포트번호

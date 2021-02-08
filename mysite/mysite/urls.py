@@ -16,10 +16,17 @@ Including another URLconf
 from os import stat
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 
 
 from django.contrib import admin
+=======
+>>>>>>> c181b98c72a9df75cc4cbf37b62a1466daf3a38f
 from mysite.views import HomeView, UserCreateView, UserCreateDoneTV
+from django.urls import path
+
+# from instrouction.views import InstrouctionLV, InstrouctionDV
+from mysite.views import HomeView, InstrouctionIntroView, InstrouctionPlanView, InstrouctionStructureView, InstrouctionView
 
 
 urlpatterns = [
@@ -35,4 +42,12 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('board/', include('board.urls')),
 
+    path('instrouction/',InstrouctionView.as_view(), name='instrouctionbase'),
+    path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
+    path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
+    path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
+
+
+    
+    path('instrouction/',include('instrouction.urls')),
 ]
