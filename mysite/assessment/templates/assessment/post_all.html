@@ -1,7 +1,6 @@
 
 
 
-<<<<<<< HEAD
 <style>
 .table td{
     text-align:center;
@@ -76,51 +75,3 @@
 
 </body>
 
-=======
-<!-- <body> <div class="table"><table border="1" style="width:50%"> <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
-    {% for post in posts %}
-    <tr>
-   <td>{{post.user}}</td> <td>{{post.performance}}</td><td>{{post.performance_re}}</td> <td>{{post.writing}}</td><td>{{post.writing_re}}</td><td>{{post.attitude}}</td><td>{{post.Portfolio}}</td>
-    </tr>
-   
-    {% endfor %}
-    -->
-
-    
-    <body> <div class="table"><table border="1" style="width:50%"> <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
-        <td>인터페이스 개발</td> {% for interface in user.interface_set.all %}
-         <td>{{interface.performance}}</td> <td>{{interface.performance_re}}</td><td>{{interface.writing}}</td><td>{{interface.writing_re}}</td><td>{{interface.attitude}}</td><td>{{interface.Portfolio}}</td>
-         {% endfor %}
-         <tr>   
-         <td>인터페이스 개발 프로젝트</td>{% for interpro in user.interface_project_set.all %}
-         <td>{{interpro.performance}}</td> <td>{{interpro.performance_re}}</td><td>{{interpro.writing}}</td><td>{{interpro.writing_re}}</td><td>{{interpro.attitude}}</td><td>{{interpro.Portfolio}}</td>
-         {% endfor %}
-         </tr>
-         <tr>
-         <td>엣지 디바이스 프로젝트</td>
-         {% for edge in user.edge_device_set.all %}
-         <td>{{edge.performance}}</td> <td>{{edge.performance_re}}</td> <td>{{edge.writing}}</td> <td>{{edge.writing_re}}</td> <td>{{edge.attitude}}</td> <td>{{edge.Portfolio}}</td>
-         {% endfor %}
-         </tr>   
-         <tr>
-             <td>게이트 웨이 디바이스 프로젝트</td>
-             {% for gateway in user.edge_device_set.all %}
-             <td>{{gateway.performance}}</td> <td>{{gateway.performance_re}}</td> <td>{{gateway.writing}}</td> <td>{{gateway.writing_re}}</td> <td>{{gateway.attitude}}</td> <td>{{gateway.Portfolio}}</td>
-             {% endfor %}
-         </tr> 
-         <tr>
-             <td>Iot 프로젝트</td>
-             {% for iot in user.iot_project_set.all %}
-             <td>{{iot.performance}}</td> <td>{{iot.performance_re}}</td> <td>{{iot.writing}}</td> <td>{{iot.writing_re}}</td> <td>{{iot.attitude}}</td> <td>{{iot.Portfolio}}</td>
-             {% endfor %}
-         </tr>
-         <tr>
-             <td>융합 프로젝트</td>
-             {% for mix in user.mix_project_set.all %}
-             <td>{{mix.performance}}</td> <td>{{mix.performance_re}}</td> <td>{{mix.writing}}</td> <td>{{mix.writing_re}}</td> <td>{{mix.attitude}}</td> <td>{{mix.Portfolio}}</td>
-             {% endfor %}
-         </tr>
-     
-     </div>
-     
->>>>>>> bhh
