@@ -16,10 +16,10 @@ Including another URLconf
 from os import stat
 from django.contrib import admin
 from django.urls import path, include
-
-
+from django.conf.urls.static import static
+from django.conf import settings
 from django.contrib import admin
-from mysite.views import HomeView, UserCreateView, UserCreateDoneTV
+from .views import HomeView, UserCreateView, UserCreateDoneTV
 
 
 urlpatterns = [
@@ -35,4 +35,4 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('board/', include('board.urls')),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
