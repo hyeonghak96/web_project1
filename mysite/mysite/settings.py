@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'widget_tweaks', # 로그인 관련 앱
     'assessment.apps.AssessmentConfig', # 추가
     # 'board',
-    # 'instrouction',
+    
     'account', #추가
     'tinymce',
-    
+    'notice',
     'instrouction',
   
 
@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': 'django_pro_db',  # 데이터베이스명
         'HOST': 'localhost',    # 서버 IP
         'PORT': '3306',         #포트 번호
-        'USER': 'projectuser',      # 사용자 ID
+        'USER': 'root',      # 사용자 ID
         'PASSWORD': '123456'    # 비밀번호
     
     }

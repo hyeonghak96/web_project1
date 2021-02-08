@@ -41,4 +41,6 @@ urlpatterns = [
 
     
     path('instrouction/',include('instrouction.urls')),
+
+    path('notice/',include('notice.urls')),
 ]
