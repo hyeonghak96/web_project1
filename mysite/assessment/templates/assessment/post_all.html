@@ -1,72 +1,77 @@
 
 
-<style>
-    h3 {
-        position : relative;
-        left:200px;
-        top:150px;
-        color:blue;
-        }
-   
-    .title{
-       
-        position:relative;
-        left: 400px;
-        top: 50px;
-       
-        
-    }
 
-    .content_iot{
-        position: absolute;
-        left:600px;
-        top :150px;
-    }
-    
+<style>
+.table td{
+    text-align:center;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+
+}
+.pointer{
+
+    color:blue;
+    font-weight:900;
+}
+ th{
+    font-size: 16px;
+    color: #0d47a1;
+
+}
 
 </style>
-<h3><div class="list">훈련 개요
-<br>교과편성 총괄표
-<br>교과별 계획
-</div></h3>
 
-<h4><div class="title">개설과정명:	
-<br>
-<br> 기관:
-<br>
-<br>훈련대상:
-<br>
-<br>수준:
-<br>
-<br>강사:
-<br>
-<br>평가 과락 기준:
-<br>	
-<br>학습기간:
-<br>	
-<br>훈련 목표:
-<br>
-</div></h4>
 
-<h4><div class="content_iot">
-    [디지털 핵심 실무인재양성] 프로젝트형 IOT 서비스 개발(유형2)_2차수
-    <br>
-    <br>
-    멀티캠퍼스
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    김구수
-    <br>
-    <br>60점
-    <br>
-    <br>2020-12-28 ~ 2021-06-04 / 6 개월 / 880 시간
-    <br>
-    <br>
-    <br>국내 최고의 4차 산업혁명 분야 교육 전문기관 멀티캠퍼스는 포스트 코로나 시대를 대비한 국가발전전략인 한국판 뉴딜을 뒷받침 할 수 있도록, 국가 기술력 강화 및 사업체 인력수요를 해소할 수 있는 최신기술을 보유한 디지털 신기술 분야 핵심 실무인재 양성을 목적으로 함.
-    <br>
-    <br>또한, 핵심기술 교육과 더불어 4개 분야 융복합 프로젝트 진행을 통해 현재 산업에서 적용되고 있는 기술응용과 타 기술 분야와의 융복합을 경험하고, 이를 바탕으로 실무와 동일한 환경에서 프로젝트 기획단계부터 개발&구현 및 테스트까지의 전체 프로세스를 수행할 수 있도록 함.
-</div></h4>
+
+
+
+
+    <body> <talbe class="type02"><table border="1" style="width:70%">
+
+
+
+      
+         <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
+        
+        
+        
+         <td class="pointer">인터페이스 개발</td> </div>{% for interface in user.interface_set.all %}
+    <td>{{interface.performance}}</td> <td>{{interface.performance_re}}</td><td>{{interface.writing}}</td><td>{{interface.writing_re}}</td><td>{{interface.attitude}}</td><td>{{interface.Portfolio}}</td>
+    {% endfor %}
+    
+    
+    <tr>   
+    <td class="pointer">인터페이스 개발 프로젝트</td>{% for interpro in user.interface_project_set.all %}
+    <td>{{interpro.performance}}</td> <td>{{interpro.performance_re}}</td><td>{{interpro.writing}}</td><td>{{interpro.writing_re}}</td><td>{{interpro.attitude}}</td><td>{{interpro.Portfolio}}</td>
+    {% endfor %}
+    </tr>
+ 
+    <tr>
+    <td class="pointer">엣지 디바이스 프로젝트</td>
+    {% for edge in user.edge_device_set.all %}
+    <td>{{edge.performance}}</td> <td>{{edge.performance_re}}</td> <td>{{edge.writing}}</td> <td>{{edge.writing_re}}</td> <td>{{edge.attitude}}</td> <td>{{edge.Portfolio}}</td>
+    {% endfor %}
+    </tr>   
+    <tr>
+        <td class="pointer">게이트 웨이 디바이스 프로젝트</td>
+        {% for gateway in user.edge_device_set.all %}
+        <td>{{gateway.performance}}</td> <td>{{gateway.performance_re}}</td> <td>{{gateway.writing}}</td> <td>{{gateway.writing_re}}</td> <td>{{gateway.attitude}}</td> <td>{{gateway.Portfolio}}</td>
+        {% endfor %}
+    </tr> 
+    <tr>
+        <td class="pointer">Iot 프로젝트</td>
+        {% for iot in user.iot_project_set.all %}
+        <td>{{iot.performance}}</td> <td>{{iot.performance_re}}</td> <td>{{iot.writing}}</td> <td>{{iot.writing_re}}</td> <td>{{iot.attitude}}</td> <td>{{iot.Portfolio}}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <td class="pointer">융합 프로젝트</td>
+        {% for mix in user.mix_project_set.all %}
+        <td>{{mix.performance}}</td> <td>{{mix.performance_re}}</td> <td>{{mix.writing}}</td> <td>{{mix.writing_re}}</td> <td>{{mix.attitude}}</td> <td>{{mix.Portfolio}}</td>
+        {% endfor %}
+    </tr>
+</table>
+</div>
+
+</body>
+
