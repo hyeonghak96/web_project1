@@ -27,7 +27,7 @@ SECRET_KEY = '@camfbcv@+!$dgq2c1-3jg#rrcs2i6rfnw)ofnweu*-ol2a710'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.30.1.58', '127.0.0.1','localhost']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     
     # 'django.contrib.auth.models.User',
     'widget_tweaks', # 로그인 관련 앱
@@ -46,6 +47,13 @@ INSTALLED_APPS = [
     # 'board',
     # 'instrouction',
     'account', #추가
+=======
+    'widget_tweaks',
+    'tinymce',
+    
+    'instrouction',
+  
+>>>>>>> ryu
 
 
 ]
@@ -88,12 +96,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_pro_db', # 데이터베이스 명
         'HOST': 'localhost', # 서버 IP
         'PORT': '3306', # 포트번호
         'USER': 'projectuser', # 사용자 ID
         'PASSWORD': '1234' # 비밀번호
+=======
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_pro_db',  # 데이터베이스명
+        'HOST': 'localhost',    # 서버 IP
+        'PORT': '3306',         #포트 번호
+        'USER': 'root',      # 사용자 ID
+        'PASSWORD': '123456'    # 비밀번호
+>>>>>>> ryu
     
     }
 }
