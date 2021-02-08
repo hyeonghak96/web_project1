@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR =  os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -38,6 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # 'django.contrib.auth.models.User',
+    'widget_tweaks', # 로그인 관련 앱
+    'assessment.apps.AssessmentConfig', # 추가
+    # 'board',
+    # 'instrouction',
+    'account', #추가
+
+
 ]
 
 MIDDLEWARE = [
@@ -55,7 +65,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates') # 홈페이지 구성,공통 templates에 넣어줌
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,13 +88,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+       'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_pro_db', # 데이터베이스 명
         'HOST': 'localhost', # 서버 IP
         'PORT': '3306', # 포트번호
         'USER': 'projectuser', # 사용자 ID
         'PASSWORD': '1234' # 비밀번호
-
+    
     }
 }
 
@@ -125,5 +137,16 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'account.User'
+
+
+
+# 로그인 관련 URL 디폴트 값
+# LOGIN_URL = '/accounts/login/' # 로그인 페이지 URL
+# LOGIN_REDIRECT_URL = '/accounts/profile' # 로그인 성공시 리다이렉트할 URL
+# LOGOUT_REDIRECT_URL = '/' # 로그 아웃시 리다이렉트할 URL
+LOGIN_REDIRECT_URL = '/' # 로그인 성공시 리다이렉트할 URL
