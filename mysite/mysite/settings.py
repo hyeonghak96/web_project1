@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> dd8f3b882d10ad08d63c7ad95ca07fa9ff5150da
     # 'django.contrib.auth.models.User',
     'widget_tweaks', # 로그인 관련 앱
     'assessment.apps.AssessmentConfig', # 추가
@@ -47,11 +51,17 @@ INSTALLED_APPS = [
     'account', #추가
     'tinymce',
     'instrouction',
+<<<<<<< HEAD
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
     'assessment.apps.AssessmentConfig',
     'account',
     'board',
+=======
+  
+
+
+>>>>>>> dd8f3b882d10ad08d63c7ad95ca07fa9ff5150da
 ]
 
 MIDDLEWARE = [
@@ -90,6 +100,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_pro_db', # 데이터베이스 명
         'HOST': 'localhost', # 서버 IP
@@ -97,6 +108,15 @@ DATABASES = {
         'USER': 'projectuser', # 사용자 ID
         'PASSWORD': '1234' # 비밀번호
 
+=======
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_pro_db',  # 데이터베이스명
+        'HOST': 'localhost',    # 서버 IP
+        'PORT': '3306',         #포트 번호
+        'USER': 'projectuser',      # 사용자 ID
+        'PASSWORD': '123456'    # 비밀번호
+    
+>>>>>>> dd8f3b882d10ad08d63c7ad95ca07fa9ff5150da
     }
 }
 
