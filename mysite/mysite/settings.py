@@ -38,9 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    
-    # 'django.contrib.auth.models.User',
+    'django.contrib.staticfiles',    
     'widget_tweaks', # 로그인 관련 앱
     'assessment.apps.AssessmentConfig', # 추가
     # 'board',
