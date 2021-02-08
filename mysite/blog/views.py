@@ -1,7 +1,7 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.db import models
+from django.shortcuts import render
+# Create your views here.
+
 from django.views.generic import ListView, DetailView, TemplateView
 from blog.models import Post, PostAttachFile
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, TodayArchiveView
@@ -21,19 +21,19 @@ class PostLV(ListView):
     model = Post
     template_name = 'blog/post_all.html' # 템플릿 파일명 변경
     context_object_name = 'posts' # 컨텍스트 객체 이름 변경(object_list)
-    paginate_by = 2 # 페이지네이션, 페이지당 문서 건 수
+    paginate_by = 5 # 페이지네이션, 페이지당 문서 건 수
 
 # DetailView
 class PostDV(DetailView):
     model = Post
 
-    def get_context_data(self,**kwargs):
-        # 조회수 증가기능 # readcount 라는 integer type 추가
-        context = super(DetailView,self).get_context_data(**kwargs)
-        obj = self.get_object()
-        obj.readcount = obj.readcount + 1
-        obj.save()
-        return context
+    # def get_context_data(self,**kwargs):
+    #     # 조회수 증가기능 # readcount 라는 integer type 추가
+    #     context = super(DetailView,self).get_context_data(**kwargs)
+    #     obj = self.get_object()
+    #     obj.readcount = obj.readcount + 1
+    #     obj.save()
+    #     return context
         
 
 
@@ -63,39 +63,39 @@ class PostTAV(TodayArchiveView):
     month_format = '%m'
 
 #--- Tag View
-class TagCloudTV(TemplateView):
-    template_name = 'taggit/taggit_cloud.html'
+# class TagCloudTV(TemplateView):
+#     template_name = 'taggit/taggit_cloud.html'
 
-class TaggedObjectLV(ListView):
-    template_name = 'taggit/taggit_post_list.html'
-    model = Post
+# class TaggedObjectLV(ListView):
+#     template_name = 'taggit/taggit_post_list.html'
+#     model = Post
 
-    def get_queryset(self):
-        return Post.objects.filter(tags__name=self.kwargs.get('tag'))
+#     def get_queryset(self):
+#         return Post.objects.filter(tags__name=self.kwargs.get('tag'))
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tagname'] = self.kwargs['tag']
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['tagname'] = self.kwargs['tag']
+#         return context
 
-#--- FormView
-class SearchFormView(FormView):
-    form_class = PostSearchForm
-    template_name = 'blog/post_search.html' 
+# #--- FormView
+# class SearchFormView(FormView):
+#     form_class = PostSearchForm
+#     template_name = 'blog/post_search.html' 
 
-    def form_valid(self, form):
-        searchWord = form.cleaned_data['search_word']
-        post_list = Post.objects.filter(
-            Q(title__icontains=searchWord) |
-            Q(description__icontains=searchWord) |
-            Q(content__icontains=searchWord)
-        ).distinct()
+#     def form_valid(self, form):
+#         searchWord = form.cleaned_data['search_word']
+#         post_list = Post.objects.filter(
+#             Q(title__icontains=searchWord) |
+#             Q(description__icontains=searchWord) |
+#             Q(content__icontains=searchWord)
+#         ).distinct()
 
-        context = {}
-        context['form'] = form
-        context['search_term'] = searchWord
-        context['object_list'] = post_list
-        return render(self.request, self.template_name, context)
+#         context = {}
+#         context['form'] = form
+#         context['search_term'] = searchWord
+#         context['object_list'] = post_list
+#         return render(self.request, self.template_name, context)
 
 
 # class PostCreateView(LoginRequiredMixin, CreateView):
@@ -109,7 +109,7 @@ class SearchFormView(FormView):
        
 class PostUpdateView(OwnerOnlyMixin, UpdateView):
     model = Post
-    fields = ['title', 'slug', 'description', 'content', 'tags']
+    fields = ['title', 'slug', 'description']
     success_url = reverse_lazy('blog:index')
 
     def form_valid(self, form):
@@ -140,7 +140,7 @@ from django.http import FileResponse
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'description', 'content', 'tags']
+    fields = ['title', 'description']
     success_url = reverse_lazy('blog:index')
  
     def form_valid(self, form):

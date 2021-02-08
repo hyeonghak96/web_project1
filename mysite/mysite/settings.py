@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     
     'account', #추가
     'tinymce',
-    'notice',
+    'blog',
     'instrouction',
   
 
