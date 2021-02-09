@@ -1,20 +1,8 @@
-from django.contrib.auth.mixins import AccessMixin
+from django.views.generic import TemplateView ,CreateView
+# from django.contrib.auth.forms import UserCreationForm
 from account.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView ,CreateView
-
-
-class OwnerOnlyMixin(AccessMixin):
-    raise_exception = True
-    permission_denied_message = "Owner only can update/delete the object"
-
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()               # 모델 인스턴스 얻기
-        if self.request.user != self.object.owner:    # 소유자인지 확인
-            self.handle_no_permission()               # 예외 발생
-
-        return super().get(request, *args, **kwargs)
-
+from django.views.generic import TemplateView, ListView, DetailView
 
 # TemplateView
 class HomeView(TemplateView):
@@ -26,12 +14,8 @@ class UserCreateView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('register_done')
 
-class Profile(TemplateView):
-    template_name = 'registration/profile.html'
-
 
 class UserCreateDoneTV(TemplateView): 
-<<<<<<< HEAD
     template_name = 'registration/register_done.html' 
 class InstrouctionView(TemplateView):
     template_name = 'instrouctionbase.html'
@@ -44,7 +28,6 @@ class InstrouctionStructureView(TemplateView):
 
 class InstrouctionPlanView(TemplateView):
     template_name = 'instrouction_plan.html'
-
 
 
 from django.contrib.auth.mixins import AccessMixin
@@ -62,6 +45,3 @@ class OwnerOnlyMixin(AccessMixin):
 
         return super().get(request,*args,**kwargs)
         
-=======
-    template_name = 'registration/register_done.html' 
->>>>>>> bfb980c6c8648df1016cc752bd3643599183ecca
