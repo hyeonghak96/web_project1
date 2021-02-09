@@ -1,0 +1,4 @@
+1. 마이그레이션 히스토리 삭제(캐시 포함)
+2. makemigration 앱
+3. python manage.py migrate --fake 앱이름 zero
+4. migrate

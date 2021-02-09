@@ -42,10 +42,17 @@ INSTALLED_APPS = [
     'widget_tweaks', # 로그인 관련 앱
     'assessment.apps.AssessmentConfig', # 추가
     # 'board',
+<<<<<<< HEAD
     # 'instrouction',
     'account', #추가
     'tinymce',
     
+=======
+    
+    'account', #추가
+    'tinymce',
+    'blog',
+>>>>>>> ed109dacdff747269a167d6bbf6367b9a538d12b
     'instrouction',
   
 
@@ -94,8 +101,13 @@ DATABASES = {
         'NAME': 'django_pro_db',  # 데이터베이스명
         'HOST': 'localhost',    # 서버 IP
         'PORT': '3306',         #포트 번호
+<<<<<<< HEAD
         'USER': 'projectuser',      # 사용자 ID
         'PASSWORD': '1234'    # 비밀번호
+=======
+        'USER': 'root',      # 사용자 ID
+        'PASSWORD': '123456'    # 비밀번호
+>>>>>>> ed109dacdff747269a167d6bbf6367b9a538d12b
     
     }
 }
@@ -151,4 +163,8 @@ AUTH_USER_MODEL = 'account.User'
 # LOGIN_URL = '/accounts/login/' # 로그인 페이지 URL
 # LOGIN_REDIRECT_URL = '/accounts/profile' # 로그인 성공시 리다이렉트할 URL
 # LOGOUT_REDIRECT_URL = '/' # 로그 아웃시 리다이렉트할 URL
+<<<<<<< HEAD
 LOGIN_REDIRECT_URL = '/' # 로그인 성공시 리다이렉트할 URL
+=======
+LOGIN_REDIRECT_URL = '/' # 로그인 성공시 리다이렉트할 URL
+>>>>>>> ed109dacdff747269a167d6bbf6367b9a538d12b
