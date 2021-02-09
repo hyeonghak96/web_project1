@@ -5,6 +5,16 @@
 {% block content %}
 
 <h2>{{ object.title }}</h2>
+
+<div>{{ object.create_dt|date:"Y 년 F j " }}일</div>
+<p>작성자 : {{post.owner}}</p>
+<br>
+
+<div>
+    {{ post.description|linebreaks }}
+</div>
+
+
 <p>
     {% if object.get_next %}
     <a href="{{ object.get_next.get_absolute_url }}" title="View previous post">
@@ -18,25 +28,6 @@
     </a>
     {% endif %}
 </p>
-<div>{{ object.modify_dt|date:"j F Y" }}</div>
-<p>작성자 : {{object.owner.username}}</p>
-<br>
-
-<div>
-    {{ object.content|linebreaks }}
-</div>
-<div>
-    <b>TAGS</b> <i class="fas fa-tag"></i>
-    {% load taggit_templatetags2_tags %}
-    {% get_tags_for_object object as "tags" %}
-    {% for tag in tags %}
-    <a href="{% url 'blog:tagged_object_list' tag.name %}">#{{tag.name}}</a>
-    {% endfor %}
-    &emsp;<a href="{% url 'blog:tag_cloud' %}">
-        <span class="btn btn-info btn-sm">TagCloud</span> </a>
-
-</div>
-
 {% if user == object.owner %}
 <div class="text-right">
     <a href="{% url 'blog:update' post.id %}" class="mr-3">
