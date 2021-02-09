@@ -34,8 +34,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email',
         max_length=255,
-        unique=True,
-    )
+        unique=True,)
     date_of_birth = models.DateField()
     phone_number =models.CharField(max_length=255,default='')
     address = models.CharField(max_length=255,verbose_name='address',default='정보없음')
