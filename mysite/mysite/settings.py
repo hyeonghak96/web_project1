@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR =  os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,7 +26,7 @@ SECRET_KEY = '@camfbcv@+!$dgq2c1-3jg#rrcs2i6rfnw)ofnweu*-ol2a710'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.30.1.58', '127.0.0.1','localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,13 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',    
+    'django.contrib.staticfiles',
+
     'widget_tweaks', # 로그인 관련 앱
-    'assessment.apps.AssessmentConfig', # 추가
-    # 'board',
-    
-    'account', #추가
     'tinymce',
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
+    'assessment.apps.AssessmentConfig',
+    'account',
+    'board',  
+
     'blog',
     'instrouction',
   
@@ -67,9 +69,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates') # 홈페이지 구성,공통 templates에 넣어줌
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,12 +91,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_pro_db',  # 데이터베이스명
-        'HOST': 'localhost',    # 서버 IP
-        'PORT': '3306',         #포트 번호
-        'USER': 'root',      # 사용자 ID
-        'PASSWORD': '123456'    # 비밀번호
-    
+        'NAME': 'django_pro_db', # 데이터베이스 명
+        'HOST': 'localhost', # 서버 IP
+        'PORT': '3306', # 포트번호
+        'USER': 'projectuser', # 사용자 ID
+        'PASSWORD': '1234' # 비밀번호
+
     }
 }
 
@@ -137,15 +137,12 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AUTH_USER_MODEL = 'account.User'
-
-
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [STATIC_DIR,]
 
 # 로그인 관련 URL 디폴트 값
 # LOGIN_URL = '/accounts/login/' # 로그인 페이지 URL

@@ -46,4 +46,5 @@ urlpatterns = [
     path('instrouction/',include('instrouction.urls')),
 
     path('blog/',include('blog.urls')),
+    path('board/', include('board.urls')),
 ]
