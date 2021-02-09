@@ -4,8 +4,10 @@
 
 {% block content %}
 <h2><i class="fas fa-bell"> 공지사항</i></h2>
+<h3><pre>
+No   제목   작성자      조회수    등록일
+</h3></pre>
 <br>
-
 {% for post in posts %}
 <h5>{{post.id}} <a href='{{ post.get_absolute_url }}' target="_blank">{{ post.title }}</a>  {{post.owner}}  {{post.readcount}} {{ post.create_dt|date:"N d, Y" }}</h5>
 
@@ -21,5 +23,6 @@
 <i class="fas fa-pencil-alt"></i> 쓰기</a>
 </div>
 {% endif %}
+<h4><a href ="{%url 'home' %}">돌아가기</a></h4>
 
 {% endblock %}
