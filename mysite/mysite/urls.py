@@ -36,7 +36,6 @@ urlpatterns = [
     path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
 
 
-
     path('assessment/', include('assessment.urls')), #평가 url
 
 
@@ -47,4 +46,5 @@ urlpatterns = [
     path('instrouction/',include('instrouction.urls')),
 
     path('blog/',include('blog.urls')),
+    path('board/', include('board.urls')),
 ]
