@@ -25,10 +25,11 @@ from .views import HomeView, UserCreateView, UserCreateDoneTV
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path('',HomeView.as_view(), name='home'),
+
     path('account/', include('django.contrib.auth.urls')), # 로그인, 로그아웃, 비밀번호 변경 등 담당
     path('account/register/', UserCreateView.as_view(), name='register'), 
     path('account/register/done/', UserCreateDoneTV.as_view(),name='register_done'), # 회원 가입 및 처리
-
 
     path('assessment/', include('assessment.urls')), #평가 url
 
