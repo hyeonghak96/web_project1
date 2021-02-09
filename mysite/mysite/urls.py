@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from mysite.views import HomeView, Profile, UserCreateView, UserCreateDoneTV
+=======
+from mysite.views import HomeView, UserCreateView, UserCreateDoneTV
+>>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
 from django.urls import path
 
 # from instrouction.views import InstrouctionLV, InstrouctionDV
@@ -36,6 +40,19 @@ urlpatterns = [
     path('account/profile',Profile.as_view(), name ='profile'),
 
 
+<<<<<<< HEAD
     
     path('instrouction/',include('instrouction.urls')),
+=======
+    path('instrouction/',InstrouctionView.as_view(), name='instrouctionbase'),
+    path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
+    path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
+    path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
+
+
+    
+    path('instrouction/',include('instrouction.urls')),
+
+    path('blog/',include('blog.urls')),
+>>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
 ]

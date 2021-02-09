@@ -33,7 +33,10 @@ class InstrouctionPlanView(TemplateView):
     template_name = 'instrouction_plan.html'
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
 from django.contrib.auth.mixins import AccessMixin
 from django.views.defaults import permission_denied
 
