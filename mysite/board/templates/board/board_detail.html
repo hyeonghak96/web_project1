@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{# {% extends "base.html" %} #}
 {% load static %}
 
 {% block title %}board_detail.html{% endblock %}
@@ -36,7 +36,7 @@
 </div>
 <br>
 {% if board.mainphoto %}
-    <img src ="{{ board.mainphoto.url }}" alt=""height="600">
+    <img src ="{{ board.mainphoto.url }}" alt=""height="200">
     <br>
 {% endif %}
 
@@ -85,34 +85,7 @@
     </table>
 
 </div>
-<!--여기 부터 --> 
-<div class="card-body">
-    {% if board.comment_set.count > 0 %}
-    <div class="mt-3">
-    {% for comment in board.comment_set.all %}
-        <div class="comment py-2 text-muted">
-            <span style="white-space: pre-line;">{{ comment.text }}</span>
-            <span>
-                - {{ comment.author }}, {{ comment.create_date }}
-                {% if comment.modify_date %}
-                (수정:{{ comment.modify_date }})
-                {% endif %}
-            </span>
-            {% if request.user == comment.author %}
-            <a href="{% url 'board:comment_modify_question' comment.id  %}" class="small">수정</a>,
-            <a href="#" class="small delete" 
-               data-uri="{% url 'pybo:comment_delete_question' comment.id  %}">삭제</a>
-            {% endif %}
-        </div>
-    {% endfor %}
-    </div>
-    {% endif %}
-    <div>
-        <a href="{% url 'board:comment_create_question' question.id  %}" 
-           class="small"><small>댓글 추가 ..</small></a>
-    </div>
-</div>
-<!-- 여기까지-->
+
 <div>
     <b>TAGS</b> <i class="fas fa-tag"></i>
     {% load taggit_templatetags2_tags %}
