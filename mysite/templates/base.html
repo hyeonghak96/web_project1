@@ -1,40 +1,70 @@
-{%load static %}
-<!DOCTYPE html>
-<html lang="ko">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>{% block title %}Django Web Programming{% endblock %}</title>
-    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    {% block extra-style %}{% endblock %}
+{% block title%}Home{% endblock %}
 
-    <style>
-        .jumbotron{
-            padding: 30px;
-            margin:0;
-            color:black;
-            background-image: url('duck_picture.png');
-            border-radius: 0;
-        }
-    </style>
-</head>
 
-<body style="padding-top:50px; margin: 0;">
-    {% include 'menu.html' %}
-    <div class="container">
-        {% block content%}{% endblock %}
+{% block content%}
+<div class ="row">
+    <div class = "col-md-8">
+        <a><i class="fas fa-bell">공지사항</i></a>
+        <div class = "container">
+            <table class ="table table-hover">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>조회수</th>
+                        <th>등록일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <th>과제</th>
+                        <th>김구수</th>
+                        <th>1241</th>
+                        <th>date</th>
+                    </tr>
+
+                    <tr>
+                        <th>2</th>
+                        <th>수행평가</th>
+                        <th>김구수</th>
+                        <th>1241</th>
+                        <th>date</th>
+                    </tr>
+                    <tr>
+                        <th>번호</th>
+                        <th>과제</th>
+                        <th>김구수</th>
+                        <th>1241</th>
+                        <th>date</th>
+                    </tr>
+                    
+                    
+                </tbody>
+
+            </table>
+            <!-- pagination 으로 구성할 예정 -->
+            <ul class="pagination justify-content-center" style="margin:20px 0">
+                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">NEXT</a></li>
+            </ul>
+        </div>
     </div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
-</script>
-{% block extra-script %}{% endblock %}
+    
+    <div class="col-md-4">
+        <ul class="list-group ">
+            <ul class="list-group">
+                <li class="list-group-item active"><i class="fas fa-drumstick-bite"></i> Active item</li>
+                <li class="list-group-item"><i class="fas fa-sitemap"></i> Menu</li>
+                <li class="list-group-item"><i class="fas fa-sitemap"></i> Selector</li>
+                </ul>
+    </div>
 
-</html>
+</div>
+{% endblock %}
