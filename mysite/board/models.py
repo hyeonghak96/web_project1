@@ -4,6 +4,9 @@ from tinymce.models import HTMLField
 from taggit.managers import TaggableManager
 from account.models import User
 
+
+
+
 # Create your models here.
 
 class Board(models.Model):

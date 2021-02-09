@@ -35,4 +35,18 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('board/', include('board.urls')),
 
+<<<<<<< HEAD
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+    path('instrouction/',InstrouctionView.as_view(), name='instrouctionbase'),
+    path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
+    path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
+    path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
+
+
+    
+    path('instrouction/',include('instrouction.urls')),
+
+    path('blog/',include('blog.urls')),
+]
+>>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c

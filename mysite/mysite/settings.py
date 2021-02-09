@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+<<<<<<< HEAD
     'django.contrib.staticfiles',
 
     'widget_tweaks', # 로그인 관련 앱
@@ -46,6 +47,20 @@ INSTALLED_APPS = [
     'assessment.apps.AssessmentConfig',
     'account',
     'board',
+=======
+    'django.contrib.staticfiles',    
+    'widget_tweaks', # 로그인 관련 앱
+    'assessment.apps.AssessmentConfig', # 추가
+    # 'board',
+    
+    'account', #추가
+    'tinymce',
+    'blog',
+    'instrouction',
+  
+
+
+>>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
 ]
 
 MIDDLEWARE = [
@@ -85,12 +100,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+<<<<<<< HEAD
         'NAME': 'django_pro_db', # 데이터베이스 명
         'HOST': 'localhost', # 서버 IP
         'PORT': '3306', # 포트번호
         'USER': 'projectuser', # 사용자 ID
         'PASSWORD': '1234' # 비밀번호
 
+=======
+        'NAME': 'django_pro_db',  # 데이터베이스명
+        'HOST': 'localhost',    # 서버 IP
+        'PORT': '3306',         #포트 번호
+        'USER': 'root',      # 사용자 ID
+        'PASSWORD': '123456'    # 비밀번호
+    
+>>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
     }
 }
 
@@ -136,5 +160,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
+<<<<<<< HEAD
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]
+=======
+
+# 로그인 관련 URL 디폴트 값
+# LOGIN_URL = '/accounts/login/' # 로그인 페이지 URL
+# LOGIN_REDIRECT_URL = '/accounts/profile' # 로그인 성공시 리다이렉트할 URL
+# LOGOUT_REDIRECT_URL = '/' # 로그 아웃시 리다이렉트할 URL
+LOGIN_REDIRECT_URL = '/' # 로그인 성공시 리다이렉트할 URL
+>>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
