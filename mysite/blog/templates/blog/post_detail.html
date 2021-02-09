@@ -6,28 +6,28 @@
 
 <h2>{{ object.title }}</h2>
 
-<div>{{ object.create_dt|date:"Y 년 F j " }}일</div>
-<p>작성자 : {{post.owner}}</p>
+<div>{{ object.modify_dt|date:"Y년 F j일" }}</div>
+<p>작성자 : {{object.owner}}</p>
 <br>
 
 <div>
-    {{ post.description|linebreaks }}
+    {{ object.description|linebreaks }}
 </div>
-
 
 <p>
     {% if object.get_next %}
     <a href="{{ object.get_next.get_absolute_url }}" title="View previous post">
-        <i class="fas fa-arrow-circle-left"></i> {{ object.get_next }}
+        <i class="fas fa-arrow-circle-left"></i> 다음 글로
     </a>
     {% endif %}
 
     {% if object.get_previous %}
     | <a href="{{ object.get_previous.get_absolute_url }}" title="View next post">
-        {{ object.get_previous }} <i class="fas fa-arrow-circle-right"></i>
+        이전 글로 <i class="fas fa-arrow-circle-right"></i>
     </a>
     {% endif %}
 </p>
+
 {% if user == object.owner %}
 <div class="text-right">
     <a href="{% url 'blog:update' post.id %}" class="mr-3">
