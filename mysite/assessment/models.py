@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from account.models import User      # add.  -> commit -> pull 
+from account.models import User
 
 # User.interface_set.all  
 # User.interface_project_set.all
