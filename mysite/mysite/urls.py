@@ -26,22 +26,26 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomeView.as_view(), name='home'),
     path('account/', include('django.contrib.auth.urls')), # 로그인, 로그아웃, 비밀번호 변경 등 담당
+    
+    
     path('account/register/', UserCreateView.as_view(), name='register'), 
     path('account/register/done/', UserCreateDoneTV.as_view(),name='register_done'), # 회원 가입 및 처리
-
-
-
-    path('assessment/', include('assessment.urls')), #평가 url
-
-
     path('instrouction/',InstrouctionView.as_view(), name='instrouctionbase'),
     path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
     path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
     path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
 
 
+
+    path('assessment/', include('assessment.urls')), #평가 url
+
+
+    
+
+
     
     path('instrouction/',include('instrouction.urls')),
 
     path('blog/',include('blog.urls')),
+    path('board/', include('board.urls')),
 ]

@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',    
     'widget_tweaks', # 로그인 관련 앱
     'assessment.apps.AssessmentConfig', # 추가
-    # 'board',
+    'board',
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
     
     'account', #추가
     'tinymce',
