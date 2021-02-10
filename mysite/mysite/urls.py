@@ -15,44 +15,29 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
-from mysite.views import HomeView, Profile, UserCreateView, UserCreateDoneTV
-=======
 from mysite.views import HomeView, UserCreateView, UserCreateDoneTV
->>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
 from django.urls import path
 
 # from instrouction.views import InstrouctionLV, InstrouctionDV
-from mysite.views import HomeView, InstrouctionIntroView, InstrouctionPlanView, InstrouctionStructureView, InstrouctionView
+from mysite.views import HomeView, InstrouctionIntroView, InstrouctionPlanView, InstrouctionStructureView, InstrouctionView, ProfileView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomeView.as_view(), name='home'),
     path('account/', include('django.contrib.auth.urls')), # 로그인, 로그아웃, 비밀번호 변경 등 담당
+    
+    
     path('account/register/', UserCreateView.as_view(), name='register'), 
     path('account/register/done/', UserCreateDoneTV.as_view(),name='register_done'), # 회원 가입 및 처리
+    path('instrouction/',InstrouctionView.as_view(), name='instrouctionbase'),
+    path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
+    path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
+    path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
     path('assessment/', include('assessment.urls')), #평가 url
-    path('instrouction/',InstrouctionView.as_view(), name='instrouctionbase'),
-    path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
-    path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
-    path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
-    path('account/profile',Profile.as_view(), name ='profile'),
-
-
-<<<<<<< HEAD
-    
-    path('instrouction/',include('instrouction.urls')),
-=======
-    path('instrouction/',InstrouctionView.as_view(), name='instrouctionbase'),
-    path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
-    path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
-    path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
-
-
-    
     path('instrouction/',include('instrouction.urls')),
 
+    path('profile/', ProfileView.as_view(), name='profile'),
     path('blog/',include('blog.urls')),
->>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
+    path('board/', include('board.urls')),
 ]

@@ -41,16 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',    
     'widget_tweaks', # 로그인 관련 앱
     'assessment.apps.AssessmentConfig', # 추가
-    # 'board',
+    'board',
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
     
     'account', #추가
     'tinymce',
-<<<<<<< HEAD
-    
-=======
     'blog',
->>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
     'instrouction',
+    
+    
   
 
 
@@ -98,13 +98,8 @@ DATABASES = {
         'NAME': 'django_pro_db',  # 데이터베이스명
         'HOST': 'localhost',    # 서버 IP
         'PORT': '3306',         #포트 번호
-<<<<<<< HEAD
         'USER': 'projectuser',      # 사용자 ID
         'PASSWORD': '1234'    # 비밀번호
-=======
-        'USER': 'root',      # 사용자 ID
-        'PASSWORD': '123456'    # 비밀번호
->>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
     
     }
 }

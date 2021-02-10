@@ -14,8 +14,8 @@ class UserCreateView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('register_done')
 
-class Profile(TemplateView):
-    template_name = 'registration/profile.html'
+class ProfileView(TemplateView):
+    template_name = 'registration/profile.html'    
 
 
 class UserCreateDoneTV(TemplateView): 
@@ -33,10 +33,8 @@ class InstrouctionPlanView(TemplateView):
     template_name = 'instrouction_plan.html'
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> aa212d3adc88c7fa0181d078056f6adf725a276c
+
 from django.contrib.auth.mixins import AccessMixin
 from django.views.defaults import permission_denied
 
