@@ -5,11 +5,11 @@ from .models import User
 
 
 class UserCreationForm(forms.ModelForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
-    name=forms.CharField(label='name',widget=forms.TextInput)
-    address = forms.CharField(label='Address', widget=forms.TextInput)
-    phone_number = forms.CharField(label='Phone number', widget=forms.TextInput)
+    password1 = forms.CharField(label='비밀번호', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='비밀번호 확인', widget=forms.PasswordInput)
+    name=forms.CharField(label='이름',widget=forms.TextInput)
+    address = forms.CharField(label='주소', widget=forms.TextInput)
+    phone_number = forms.CharField(label='전화번호', widget=forms.TextInput)
 
     class Meta:
         model = User

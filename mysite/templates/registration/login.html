@@ -1,9 +1,57 @@
-{% extends "base.html" %}
+
 {% load widget_tweaks %}
-{% block title %}login.html{% endblock %}
+{% block title %}{% endblock %}
 {% block content %}
- <h1>Please Login</h1>
- <p class="font-italic">Please enter your id and password.</p>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+   
+   
+</head>
+
+
+    <meta charset="utf-8">
+   
+<style>
+      
+    
+   
+    /* .card{
+        position:absolute;
+        left:400px;
+        width:500px;
+    } */
+
+    .fa-sign-in-alt{
+        position:relative;
+        left:30px;
+        margin-bottom: 20px;
+    }
+    body{
+        background-image:url('https://assets.entrepreneur.com/content/3x2/2000/20150708172005-coding-working-workspace-apple-macintosh.jpeg?width=700&crop=2:1');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .mes{
+        position:float;
+        margin-top:50px;
+        text-align:center;
+        
+    }
+</style>
+
+<body>
+<div class="mes">
+<h1 style="color:white">                Multicampus Education System </h1>
+ <p class="font-italic" style="color:white">                                                Please enter your email and password.</p></div>
  {% if form.errors %}
  <div class="alert alert-danger">
  <div class="font-weight-bold">
@@ -12,35 +60,48 @@
  {{ form.errors }}
  </div>
  {% endif %}
- <form action="." method="post" class="card pt-3">
+ 
+
+ <form action="." method="post" class="cardbody my-auto mx-auto  col-md-6 pt-3">    
+    <div class="shadow p-3 mb-5 bg-white">
+  <pre>
+   
+                             <img src="https://www.multicampus.com/img/saas/main/logo/CUS0001/pc_main.png" alt="My Image">
+     
+ </pre>
     {% csrf_token %}
-    <div class="form-group row">
-    {{ form.username| add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-    <div class="col-sm-5">
+    <div class="form-group row">   
+    {{ form.username| add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
+    <div class="col-sm-6">
     {{ form.username|add_class:"form-control"|attr:"autofocus" }}
     </div>
     </div>
     <div class="form-group row">
-    {{ form.password| add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-    <div class="col-sm-5">
+    {{ form.password| add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
+    <div class="col-sm-6">
     {{ form.password|add_class:"form-control" }}
     </div>
     </div>
-    
-        
-    <div class="form-group">
-        <div class="offset-sm-2 col-sm-5">
-        <input type="submit" value="Log in" class="btn btn-info"/>
+            
+    <br>
+         <!--로그인  -->
+        <div class="form-group">
+        <div class="offset-sm-1 col-md-10">
+        <input type="submit" value="Log in" class="btn btn-info btn-block"/>
         <input type="hidden" name="next" value="{{ next }}" />
         </div>
         </div>
-<<<<<<< HEAD
-       
-       
-        
-    </form>
-           
-=======
+
+        <!-- 회원가입 -->
+        <div class="form-group">
+            <div class="offset-sm-1 col-md-10">
+                <a class="btn btn-info btn-block"  href="{% url 'register' %}">Register</a> 
+            
+            </div>
+            </div>
+
+    </div>
+
         </form>
->>>>>>> ed109dacdff747269a167d6bbf6367b9a538d12b
+    </body>
        {% endblock %}
