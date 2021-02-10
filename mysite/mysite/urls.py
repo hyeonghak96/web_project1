@@ -24,6 +24,8 @@ from mysite.views import HomeView, InstrouctionIntroView, InstrouctionPlanView, 
 from django.conf.urls.static import static
 from django.conf import settings
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomeView.as_view(), name='home'),
@@ -38,6 +40,7 @@ urlpatterns = [
     path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
 
 
+
     path('assessment/', include('assessment.urls')), #평가 url
 
 
@@ -49,4 +52,7 @@ urlpatterns = [
 
     path('blog/',include('blog.urls')),
     path('board/', include('board.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

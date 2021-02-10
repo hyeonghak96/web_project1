@@ -21,7 +21,7 @@ class BoardLV(ListView):
     model = Board
     template_name = 'board/board_index.html'   # 템플릿 파일명 변경
     context_object_name = 'boards'          # 컨텍스트 객체 이름 변경(object_list)
-    paginate_by = 10                        # 페이지네이션, 페이지 당 문서 건 수
+    paginate_by = 5                        # 페이지네이션, 페이지 당 문서 건 수
 
 # DetailView
 class BoardDV(DetailView):

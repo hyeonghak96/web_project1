@@ -2,6 +2,7 @@ from django.urls import path, re_path
 from .views import *
 
 
+
 app_name = 'board'
 
 urlpatterns = [
@@ -19,4 +20,4 @@ urlpatterns = [
     # path('comment/create/question/<int:board_id>/', views.comment_create_question, name='comment_create_question'),
     # path('comment/modify/question/<int:comment_id>/', views.comment_modify_question, name='comment_modify_question'),
     # path('comment/delete/question/<int:comment_id>/', views.comment_delete_question, name='comment_delete_question'),
-]
+] 
