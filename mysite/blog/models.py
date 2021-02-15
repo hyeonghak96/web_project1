@@ -12,7 +12,7 @@ class Post(models.Model):
     description = models.CharField('DESCRIPTION', max_length =100, blank=True, help_text='simple description text.')
     create_dt = models.DateTimeField('CREATE DATE', auto_now_add=True)
     modify_dt = models.DateTimeField('MODIFY DATE', auto_now=True)
-    readcount = models.IntegerField(blank=True)
+    readcount = models.IntegerField('READCOUNT',blank=True, default= 0)
 
     owner = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name='OWNER', blank=True, null=True)
 

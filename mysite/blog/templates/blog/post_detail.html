@@ -4,10 +4,21 @@
 
 {% block content %}
 
+<div style="margin-left:6%">
 <h2>{{ object.title }}</h2>
+
 
 <div>{{ object.modify_dt|date:"Y년 F j일" }}</div>
 <p>작성자 : {{object.owner}}</p>
+<p>조회수 : {{object.readcount}}</p>
+<div class="text-right my-3">
+    {% for file in post.files.all %}
+    <a href="{%url 'blog:download' file.id%}" class="ml-4">
+   <i class="fas fa-download"></i>
+    {{file.filename}} ({{file.size | filesizeformat}}) </a>
+    {% endfor %}
+    </div>
+
 <br>
 
 <div>
@@ -17,16 +28,21 @@
 <p>
     {% if object.get_next %}
     <a href="{{ object.get_next.get_absolute_url }}" title="View previous post">
-        <i class="fas fa-arrow-circle-left"></i> 다음 글로
+        <i class="fas fa-arrow-circle-left"></i> 다음 글
     </a>
     {% endif %}
 
     {% if object.get_previous %}
     | <a href="{{ object.get_previous.get_absolute_url }}" title="View next post">
-        이전 글로 <i class="fas fa-arrow-circle-right"></i>
+        이전 글 <i class="fas fa-arrow-circle-right"></i>
     </a>
     {% endif %}
 </p>
+<ul class="navbar-nav mr-auto">
+<li class=" btn">
+    <a class="nav-link text-black" href="{% url 'home' %}"></i> 돌아가기</a>
+</li>
+</ul>
 
 {% if user == object.owner %}
 <div class="text-right">
@@ -41,6 +57,7 @@
 </div>
 <div>
         {{ post.content | safe }}
+</div>
 </div>
 
 {% endblock %}

@@ -7,7 +7,7 @@ from blog.models import Post, PostAttachFile
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, TodayArchiveView
 
 from django.views.generic import FormView
-from django.db.models import Q
+from django.db.models import Q,F
 from blog.forms import PostSearchForm
 
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -20,20 +20,21 @@ from mysite.views import OwnerOnlyMixin
 class PostLV(ListView):
     model = Post
     template_name = 'blog/post_all.html' # 템플릿 파일명 변경
-    context_object_name = 'posts' # 컨텍스트 객체 이름 변경(object_list)
+    context_object_name = 'object_list' # 컨텍스트 객체 이름 변경(object_list)
     paginate_by = 5 # 페이지네이션, 페이지당 문서 건 수
 
 # DetailView
 class PostDV(DetailView):
     model = Post
 
-    # def get_context_data(self,**kwargs):
+    def get_context_data(self,**kwargs):
     #     # 조회수 증가기능 # readcount 라는 integer type 추가
-    #     context = super(DetailView,self).get_context_data(**kwargs)
-    #     obj = self.get_object()
-    #     obj.readcount = obj.readcount + 1
-    #     obj.save()
-    #     return context
+            context = super(DetailView,self).get_context_data(**kwargs)
+            obj = self.get_object()
+            obj.readcount = obj.readcount + 1
+            obj.save()
+            return context
+        
         
 
 
@@ -110,7 +111,7 @@ class PostTAV(TodayArchiveView):
 class PostUpdateView(OwnerOnlyMixin, UpdateView):
     model = Post
     fields = ['title', 'slug', 'description']
-    success_url = reverse_lazy('blog:index')
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         #form.instance.modify_dt = timezone.now()
@@ -133,15 +134,15 @@ class PostUpdateView(OwnerOnlyMixin, UpdateView):
 
 class PostDeleteView(OwnerOnlyMixin, DeleteView) :
     model = Post
-    success_url = reverse_lazy('blog:index')
+    success_url = reverse_lazy('home')
 
 
 from django.http import FileResponse
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'description']
-    success_url = reverse_lazy('blog:index')
+    fields = ['title', 'description','readcount']
+    success_url = reverse_lazy('home')
  
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -167,3 +168,38 @@ def download(request, id):
     file_path = os.path.join(settings.MEDIA_ROOT, str(file.upload_file))
 
     return FileResponse(open(file_path, 'rb'))
+
+
+# from django.http import HttpResponseRedirect
+# from account.models import User
+
+# def view(request, no=0, page=1):
+#     # 존재하는 게시글이 없을 경우 return
+#     if no == 0:
+#         return HttpResponseRedirect('list')
+
+#     post = Post.objects.filter(id=no)
+
+#     data = {
+#         'post':post[0],
+#         'page':page,
+#     }
+
+#     response = render(request, 'blog/post_all.html', data)
+#     if request.session.get('account_user') is None:
+#         cookie_name = 'readcount'
+#     else:
+#         cookie_name = f'readcount:{request.session["account_user"]["id"]}'
+
+
+#     if request.COOKIES.get(cookie_name) is not None:
+#         cookies = request.COOKIES.get(cookie_name)
+#         cookies_list = cookies.split('|')
+#         if str(no) not in cookies_list:
+#             post.update(hit=F('readcount') + 1)
+#             return response
+#     else:
+#         post.update(hit=F('readcount') + 1)
+#         return response
+
+#     return render(request, 'blog/post_all.html', data)
