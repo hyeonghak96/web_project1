@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'tinymce',
     'blog',
     'instrouction',
+
+    'events',
   
 
 
@@ -96,8 +98,8 @@ DATABASES = {
         'NAME': 'django_pro_db',  # 데이터베이스명
         'HOST': 'localhost',    # 서버 IP
         'PORT': '3306',         #포트 번호
-        'USER': 'projectuser',      # 사용자 ID
-        'PASSWORD': '1234'    # 비밀번호
+        'USER': 'root',      # 사용자 ID
+        'PASSWORD': '123456'    # 비밀번호
     
     }
 }

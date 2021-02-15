@@ -48,4 +48,5 @@ urlpatterns = [
 
     path('blog/',include('blog.urls')),
     path('board/', include('board.urls')),
+    path('events/',include('events.urls')),
 ]
