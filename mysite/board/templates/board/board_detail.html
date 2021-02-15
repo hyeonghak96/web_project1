@@ -59,8 +59,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="{ % url 'board:comment_delete' comment.id % }">삭제하기</a></td>
-            <td><a href="{ % url 'board:comment_update' comment.id % }">수정하기</a></td>
+            <td><a href="{ % url 'board:comment_delete' board.id % }">삭제하기</a></td>
+            <td><a href="{ % url 'board:comment_update' board.id % }">수정하기</a></td>
         </tr>
         {% endfor %}
     </table>

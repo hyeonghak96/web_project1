@@ -33,16 +33,16 @@
 </table>
 
 
-{% include "pagination.html" %}
-
-
     {% if user.is_active %}
-    <div class="text-right mr-3" style = "float:right;">
+    <div class="text-right mr-3">
         <a href="{%url 'board:add' %}" class="btn btn-primary btn-sm">
         <i class="fas fa-pencil-alt"></i> 쓰기</a>
     </div>
     {% endif %}
 
+
+
+    {% include "pagination.html" %}
 
 
 
