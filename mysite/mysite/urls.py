@@ -38,12 +38,6 @@ urlpatterns = [
     path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
     path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
     path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> cee140a022de4912917d58fe7cc821cd871e919a
     path('assessment/', include('assessment.urls')), #평가 url
     path('instrouction/',include('instrouction.urls')),
 

@@ -11,6 +11,8 @@ from django.conf import settings
 from .models import Board, BoardAttachFile, Comment
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from .admin import PhotoInline
+
 
 # ListView
 class BoardLV(ListView):

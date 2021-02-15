@@ -40,13 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',    
     'widget_tweaks', # 로그인 관련 앱
-<<<<<<< HEAD
-    'board',
-    'assessment.apps.AssessmentConfig', # 추가
-=======
+    
     'assessment.apps.AssessmentConfig', # 추가
     'board',
->>>>>>> cee140a022de4912917d58fe7cc821cd871e919a
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
     
@@ -105,13 +101,8 @@ DATABASES = {
         'NAME': 'django_pro_db',  # 데이터베이스명
         'HOST': 'localhost',    # 서버 IP
         'PORT': '3306',         #포트 번호
-<<<<<<< HEAD
         'USER': 'projectuser',      # 사용자 ID
         'PASSWORD': '1234'    # 비밀번호
-=======
-        'USER': 'root',      # 사용자 ID
-        'PASSWORD': '123456'    # 비밀번호
->>>>>>> cee140a022de4912917d58fe7cc821cd871e919a
     
     }
 }
@@ -154,12 +145,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'board', 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-=======
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
->>>>>>> cee140a022de4912917d58fe7cc821cd871e919a
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
