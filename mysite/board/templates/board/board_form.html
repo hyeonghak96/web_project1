@@ -6,7 +6,7 @@
                 url("font/Pangolin-Regular.ttf") format("opentype");
         }
         body{
-            background-image: url('https://lh3.googleusercontent.com/proxy/3OPJBeXStGv_I_WkQ0r5g9a75xqLmbGdgkMx__3KqATOExvMWUVbWGcKrT-KCuVjmZ44uMPZmf10j5sH-a2as-27Sq5aFj_WtJUlhJjqkzgfm_njx1gjgssXzutsvdpaFnoEBvk');
+            background-image: url('http://v3wall.com/wallpaper/1920_1080/1006/1920_1080_20100605092402139801.jpg');
             background-repeat: no-repeat;
             background-size:cover;
         }
@@ -19,7 +19,7 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
 
-{% block title %}board_form.html{% endblock %}
+{% block title %}게시글 작성{% endblock %}
 
 
 {% block content %}
@@ -32,7 +32,7 @@
     </div>
     {% endif %}
 
- 
+    <form action="." method="post" enctype="multipart/form-data" >{% csrf_token %}
         <label for="files" class="font-weight-bold">제목</label>
         <br>
         <div class="col-sm-8">
@@ -45,9 +45,7 @@
             {{ form.description|add_class:"form-control" }}
         </div>
 <br>
-<br>
 
-<br>
 <div class="form-group row", style="float:right;">
     <label for="files" class="font-weight-bold">첨부 파일: </label>&nbsp;
     <div>
@@ -86,9 +84,11 @@
 
 <div class="form-group">
     <div>
-        <input type="submit" value="글 등록" class="btn btn-success" />
+        <button type="submit"  class="btn btn-success">글 등록</button>
+        <button type="button" class="btn btn-success" style = "float:right;" onclick="location.href = '/board/'">돌아가기</button>
     </div>
 </div>
+</form>
 
 
 {% endblock %}

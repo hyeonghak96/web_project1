@@ -1,15 +1,16 @@
+
 <head>
     <style>
         @font-face {
                 font-family: 'Pangolin';
-                src: url("./static/font/Pangolin-Regular.ttf") format("opentype");
+                src: url("font/Pangolin-Regular.ttf") format("opentype");
         }
+
         body{
-            background-image: url('https://lh3.googleusercontent.com/proxy/3OPJBeXStGv_I_WkQ0r5g9a75xqLmbGdgkMx__3KqATOExvMWUVbWGcKrT-KCuVjmZ44uMPZmf10j5sH-a2as-27Sq5aFj_WtJUlhJjqkzgfm_njx1gjgssXzutsvdpaFnoEBvk');
+            background-image: url('http://v3wall.com/wallpaper/1920_1080/1006/1920_1080_20100605092402139801.jpg');
             background-repeat: no-repeat;
             background-size:cover;
         }
-        
 
     </style>
 
@@ -18,9 +19,8 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}board_detail.html{% endblock %}
+{% block title %}게시판 내용{% endblock %}
 {% block content %}
-
 
 <h2 style="font-family:Pangolin;">{{object.title}}</h2>
 
@@ -45,7 +45,7 @@
     {% if board.mainphoto %}
     <img src ="{{ board.mainphoto.url }}" alt=""height="200">
     <br>
-{% endif %}
+    {% endif %}
 
     {{board.content | safe}}
 
@@ -53,16 +53,6 @@
 <br>
 <br>
 
-<div class="container p-3 my-3 border">
-
-<form action="{ % url "board:comment" object.id % }" method="POST">
-    {% csrf_token %}
-    
-        
-        <input type="submit" value="Comment" class="btn btn-outline-primary">
-    
-    </form>
-    
     <table class="table table-striped">
         {% for comment in comments %}
         <tr>
@@ -84,10 +74,9 @@
     {% for tag in tags %}
     <a href="{% url 'board:tagged_object_list' tag.name %}">#{{tag.name}}</a>
     {% endfor %}
-    &emsp;<a href="{% url 'board:tag_cloud' %}">
-        <span class="btn btn-info btn-sm">TagCloud</span> </a>
+    <!-- &emsp;<a href="{% url 'board:tag_cloud' %}">
+        <span class="btn btn-info btn-sm">TagCloud</span> </a> -->
 </div>
-
 
 {% if user == object.owner %}
 <div class="text-right">

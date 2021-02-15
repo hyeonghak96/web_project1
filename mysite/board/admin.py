@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Board, Photo
+from .models import Board, Photo, Comment
 
 class PhotoInline(admin.TabularInline):
     model = Photo
