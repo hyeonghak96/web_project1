@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from mysite.views import HomeView, UserCreateView, UserCreateDoneTV
+from mysite.views import  HomeView, UserCreateView, UserCreateDoneTV
 from django.urls import path
 
 # from instrouction.views import InstrouctionLV, InstrouctionDV
