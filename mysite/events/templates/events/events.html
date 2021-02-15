@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class = "row">
+    <div class = "col-md-2">
+        <h2> {{year}}년 {{month_number}}월</h2>
+    
+        현재시각 {{ time }}<br/>
+        {{cal|safe}}<br/>
+    
+    </div>
+            
+    <div class = "col-md-10">
+        {% include 'events/events_list.html'%}
+        
+    </div>
+</div>
+
+    
+
+{% endblock%}
+    
+    
+    

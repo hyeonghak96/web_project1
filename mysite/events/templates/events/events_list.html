@@ -1,0 +1,24 @@
+{% block content %}
+<table class = "table table-hover">
+    <thead>
+        <tr>
+            <th>행사명</th>
+            <th>날짜</th>
+            <th>장소</th>
+            <th>책임자</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            
+            <td>{{object.name }}</a></td>
+            <td>{{object.event_date}}</td>
+            <td>{{object.venue}}</td>  
+            <td>{{object.manager}}</td> 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
