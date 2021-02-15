@@ -1,13 +1,16 @@
-{# {% extends "base.html" %} #}
+{% extends "base.html" %} 
 {% load static %}
 
 {% block title %}board_detail.html{% endblock %}
 {% block content %}
 
 
-<h2>{{object.title}}</h2>
 
-<p>
+<div class="card" style="margin-left:6%">
+
+<h2 style='margin-top:10px;'>{{object.title}}</h2>
+
+<p style='margin-top:10px;'>
     {%if object.get_previous %}
         <a href="{{object.get_previous.get_absolute_url}}"
             title="이전 글">prev</a>
@@ -54,13 +57,7 @@
 <br>
 <br>
 
-<div style="border:1px solid; padding:10px; width:200px ;" >
-    <h6>저 버스 표지판에 적힌 지명들은 이 세상에 존재하지 않는 곳이거나 누구도 갈 수 없는 곳인 양 여겨지고 있다. 저 약재상과 이불 가게의 진열창을 침수시킨 어둠은 내가 항시 보던 어둠과 전혀 달라 어떤 탐미적 이질감마저 느껴지고 있다.
-    
-    상점 안에 보이는 저 상인들조차도 단순히 뭔가를 팔고 있는 것이 아니라, 인생이라는  |</h6>
-    <br>
-    <br>
-    </div>
+
 
 <div class="container p-3 my-3 border">
 
@@ -68,7 +65,7 @@
     {% csrf_token %}
     
         
-        <input type="submit" value="Comment" class="btn btn-outline-primary">
+
     
     </form>
     
@@ -78,8 +75,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="{ % url 'board:comment_delete' comment.id % }">삭제하기</a></td>
-            <td><a href="{ % url 'board:comment_update' comment.id % }">수정하기</a></td>
+            <td><a href="{ % url 'board:comment_delete' board.id % }">삭제하기</a></td>
+            <td><a href="{ % url 'board:comment_update' board.id % }">수정하기</a></td>
         </tr>
         {% endfor %}
     </table>
@@ -96,5 +93,6 @@
     &emsp;<a href="{% url 'board:tag_cloud' %}">
         <span class="btn btn-info btn-sm">TagCloud</span> </a>
 </div>
+</body>
 
 {% endblock %}

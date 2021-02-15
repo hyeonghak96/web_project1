@@ -1,16 +1,54 @@
-{# {% extends "base.html" %} #}
-{% block title %}board_index.html{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content ="width-device-width, initial-scale=1">
+    <title>게시판</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+{% extends "base.html" %}
+{% block title %}게시판{% endblock %}
 
 {% block content %}
 
-<h1>Blog List</h1>
+<style>
+    h1{
+        position:relative;
+        margin-top:20px;
+    }
+
+    .table{
+        position:relative;
+        
+    }
+    .card{
+        position: relative;
+        margin-left:30px;
+    }
+</style>
+
+<div class="card">
+<h1>게시판</h1>
 <br>
-{%for board in boards%}
-    <h3><a href="{{board.get_absolute_url}}">{{board.title}}</a></h3>
-        {{board.modify_dt|date:"Y-m-d"}}
-    <p>{{board.description}}</p>
-{% endfor %}
-<br>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+            <th>조회수</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for board in boards%}
+        <tr>
+            <td><a href="{{board.get_absolute_url}}">{{board.title}}</a></td>
+            <td>{{board.owner}}</td>
+            <td>{{board.create_dt}}</td>
+            <td>{{board.hit}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 
     {% if user.is_active %}
     <div class="text-right mr-3">
@@ -21,6 +59,13 @@
 
 
 
+    {% include "pagination.html" %}
+
+</div>
 
 {% endblock %}
+
+
+
+
 

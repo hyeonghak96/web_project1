@@ -8,20 +8,16 @@ from django.http import FileResponse
 from .forms import BoardSearchForm, CommentForm    #, QuestionForm, AnswerForm
 import os
 from django.conf import settings
-from .models import Board, BoardAttachFile
+from .models import Board, BoardAttachFile, Comment
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-
-# from .models import Question, Answer, Comment
-
-# Create your views here.
 
 # ListView
 class BoardLV(ListView):
     model = Board
     template_name = 'board/board_index.html'   # 템플릿 파일명 변경
     context_object_name = 'boards'          # 컨텍스트 객체 이름 변경(object_list)
-    paginate_by = 10                        # 페이지네이션, 페이지 당 문서 건 수
+    paginate_by = 5                        # 페이지네이션, 페이지 당 문서 건 수
 
 # DetailView
 class BoardDV(DetailView):
@@ -70,7 +66,6 @@ class BoardCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        # return HttpResponseRedirect(self.get_success_url())
         response = super().form_valid(form)  # Post 모델 저장, self.object
 
         # 업로드 파일 얻기
@@ -83,12 +78,10 @@ class BoardCreateView(LoginRequiredMixin, CreateView):
 
         return response
 
-        # return super().form_valid(form)
-
 class BoardUpdateView(OwnerOnlyMixin, UpdateView):
     model = Board
     fields = ['title', 'description', 'content', 'tags']
-    success_url = reverse_lazy('board_index.html')
+    success_url = reverse_lazy('board:index')
 
     def form_valid(self, form):
         delete_files = self.request.POST.getlist("delete_files")
@@ -109,21 +102,7 @@ class BoardUpdateView(OwnerOnlyMixin, UpdateView):
 
 class BoardDeleteView(OwnerOnlyMixin, DeleteView):
     model = Board
-    success_url = reverse_lazy('board_index.html')
-
-# class CommentCreateView:
-    
-#     def comment(request, board_id):
-
-#         if request.method == "BOARD":
-#             comment_form = CommentForm(request.BOARD)
-#             comment_form.instance.author_id = request.user.id
-#             comment_form.instance.board_id = board_id
-#             if comment_form.is_valid():
-#                 comment = comment_form.save()
-
-#         return HttpResponseRedirect(reverse_lazy('board:detail', args=[board_id]))
-
+    success_url = reverse_lazy('board:index')
 
 
 def download(request, id):
@@ -167,12 +146,12 @@ def view(request, no=0, page=1):
 
 
 # class CommentCreateView(LoginRequiredMixin, CreateView):
-#     @login_required(login_url='common:login')
+#     @login_required(login_url='mysite:login')
 #     def comment_create_question(request, board_id):
 #         """
 #         board 댓글등록
 #         """
-#         question = get_object_or_404(Question, pk=board_id)
+#         question = get_object_or_404(Board, pk=board_id)
 #         if request.method == "POST":
 #             form = CommentForm(request.POST)
 #             if form.is_valid():
@@ -189,7 +168,7 @@ def view(request, no=0, page=1):
 
 
 # class CommentUpdateView(OwnerOnlyMixin, UpdateView):
-#     @login_required(login_url='common:login')
+#     @login_required(login_url='mysite:login')
 #     def comment_modify_question(request, comment_id):
 #         """
 #         board 댓글수정
