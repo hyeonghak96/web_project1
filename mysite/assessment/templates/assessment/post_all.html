@@ -2,6 +2,9 @@
 
  {% block content %}
 <style>
+
+
+    
     table{
         position : relative;
         top : 50px;
@@ -39,28 +42,30 @@
 
 </style>
 
+
+
+<div class="card">  
+    <br>
 <div class="highlight">
 <i class="fas fa-highlighter"> 성취도 평가</i>
 </div>
-
-    <body>
-        
+    <body>        
         <div class="table"><table border="0" style="width:80%"> <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
         <td div class= "pointer"> <i class="fas fa-chalkboard-teacher"></i> 인터페이스 개발 </td>
          {% for interface in user.interface_set.all %}
          <td>{{interface.performance}}</td> <td>{{interface.performance_re}}</td><td>{{interface.writing}}</td><td>{{interface.writing_re}}</td><td>{{interface.attitude}}</td><td>{{interface.Portfolio}}</td>
          {% endfor %}
          <tr>   
-         <td div class="pointer"><i class="fas fa-chalkboard-teacher"></i>  인터페이스 개발 프로젝트 <button type="button" class="btn btn-success">포트폴리오</button>
-         </td>{% for interpro in user.interface_project_set.all %}
-         <td>{{interpro.performance}}</td> <td>{{interpro.performance_re}}</td><td>{{interpro.writing}}</td><td>{{interpro.writing_re}}</td><td>{{interpro.attitude}}</td><td>{{interpro.Portfolio}}</td>
-         {% endfor %}
+            <td div class="pointer"><i class="fas fa-chalkboard-teacher"></i>  인터페이스 개발 프로젝트 <button type="button" class="btn btn-success">포트폴리오</button>
+            </td>{% for interpro in user.interface_project_set.all %}
+            <td>{{interpro.performance}}</td> <td>{{interpro.performance_re}}</td><td>{{interpro.writing}}</td><td>{{interpro.writing_re}}</td><td>{{interpro.attitude}}</td><td>{{interpro.Portfolio}}</td>
+            {% endfor %}
          </tr>
          <tr>
-         <td div class= "pointer"> <i class="fas fa-chalkboard-teacher"></i> 엣지 디바이스 제어</td>
-         {% for edge in user.edge_device_set.all %}
-         <td>{{edge.performance}}</td> <td>{{edge.performance_re}}</td> <td>{{edge.writing}}</td> <td>{{edge.writing_re}}</td> <td>{{edge.attitude}}</td> <td>{{edge.Portfolio}}</td>
-         {% endfor %}
+            <td div class= "pointer"> <i class="fas fa-chalkboard-teacher"></i> 엣지 디바이스 제어</td>
+            {% for edge in user.edge_device_set.all %}
+            <td>{{edge.performance}}</td> <td>{{edge.performance_re}}</td> <td>{{edge.writing}}</td> <td>{{edge.writing_re}}</td> <td>{{edge.attitude}}</td> <td>{{edge.Portfolio}}</td>
+            {% endfor %}
          </tr>   
          <tr>
              <td div class="pointer"> <i class="fas fa-chalkboard-teacher"></i> 게이트 웨이 디바이스 제어</td>
@@ -83,5 +88,7 @@
              {% endfor %}
          </tr>
      
-     </div>
+        </div>
+</div>    
+</body>
 {% endblock %}

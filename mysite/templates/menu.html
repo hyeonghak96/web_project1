@@ -1,6 +1,7 @@
 <style>
     .jumbotron{
         background-image:url(https://cdn.ourcodeworld.com/public-media/articles/articleocw-5d07e6b3790af.jpg) ;
+        position:fixed-top;
     }
 </style>
 
@@ -19,13 +20,10 @@
                 <a class="nav-link text-white" href="{% url 'instrouctionbase' %}"><i class="fas fa-chalkboard-teacher"></i> 훈련소개</a>
             </li>
             <li class="nav-item mx-1 btn btn-primary">
-                <a class="nav-link text-white" href="{% url 'blog:index' %}"><i class="fas fa-bell"></i> 공지사항</a>
-            </li>
-            <li class="nav-item mx-1 btn btn-primary">
                 <a class="nav-link text-white" href="{% url 'assessment:index' %}"><i class="fas fa-pencil-alt"></i> 평가</a>
             </li>
             <li class="nav-item mx-1 btn btn-primary">
-                <a class="nav-link text-white" href="#"><i class="fas fa-list"></i> 기타</a>
+                <a class="nav-link text-white" href="#"><i class="fas fa-list"></i> 게시판</a>
             </li>
             <li class="nav-item dropdown mx-1 btn btn-primary">
                 <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i> 목록</a>
@@ -72,18 +70,20 @@
     <style>
     body {
       font-family: "Lato", sans-serif;
+      
     }
     
     .sidenav {
       height: 100%;
-      width: 160px;
+      width: 140px;
       position: fixed;
       z-index: 1;
       top: 0;
       left: 0;
-      background-color: #111;
+      background-color: #F5F5F5;
       overflow-x: hidden;
       padding-top: 20px;
+      
     }
     
     .sidenav a, .dropdown-btn {
@@ -100,11 +100,15 @@
     outline: none;
 }
 
+.active {
+  background-color: green;
+  color: black;
+}
     
 
     
     .sidenav a:hover {
-      color: #f1f1f1;
+      color:black;
     }
     
     .main {
@@ -129,22 +133,48 @@
     </style>
     </head>
     <body>
-    
-        <div class="sidenav">
+
+        
+        <div class="sidenav"> 
             <a href="/">Home</a>
-            <a href="#clients">Assessment</a>
-            <a href="#contact">Board</a>
+            <a href="/assessment/">Assessment</a>
+            <a href="/board/">Board</a>
             <button class="dropdown-btn">Instruction
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-container">
-              <a href="#">intro</a>
-              <a href="#">structure</a>
-              <a href="#">plan</a>
+              <a href="/instrouction/intro">intro</a>
+              <a href="/instrouction/structure">structure</a>
+              <a href="/instrouction/plan">plan</a>
             </div>
             <a href="#contact">Search</a>
           </div>
-    
+
+          <script>
+            /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+            
+            for (i = 0; i < dropdown.length; i++) {
+              dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+              } else {
+              dropdownContent.style.display = "block";
+              }
+              });
+            }
+            </script>
+            
+
+            
+
+
+          
+               
+            
 
 
 
@@ -161,15 +191,16 @@
                 <i class="fas fa-user"></i>
                 {{user.email }} </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="registration/logged_out.html">Logout</a>
-                <a class="dropdown-item" href="#">Change Password</a>
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
             </div>
             {% else %}
             <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
                 <i class="fas fa-user"></i>Enter</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Login</a>
-                <a class="dropdown-item" href="#">Register</a>
+                <a class="dropdown-item" href="{% url 'login'%}">Login</a>
+                <a class="dropdown-item" href="{% url 'register'%}">Register</a>
             </div>
         </li>
             {% endif %}

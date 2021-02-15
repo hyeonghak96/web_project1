@@ -3,10 +3,22 @@ from django.views.generic import TemplateView ,CreateView
 from account.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView
+from blog.models import Post
+from django.core.paginator import Paginator
+
 
 # TemplateView
-class HomeView(TemplateView):
+class HomeView(ListView):
     template_name = 'home.html'
+    
+    model = Post
+    paginate_by = 5
+    def get_context_data(self,**kwargs):  
+        context = super().get_context_data(**kwargs)
+        # context['object_list'] = Post.objects.all()
+        return context
+
+    
 
 #--- User Creation
 class UserCreateView(CreateView): 
