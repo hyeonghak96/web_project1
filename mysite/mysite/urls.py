@@ -19,7 +19,7 @@ from mysite.views import  HomeView, UserCreateView, UserCreateDoneTV
 from django.urls import path
 
 # from instrouction.views import InstrouctionLV, InstrouctionDV
-from mysite.views import HomeView, InstrouctionIntroView, InstrouctionPlanView, InstrouctionStructureView, InstrouctionView
+from mysite.views import HomeView, InstrouctionIntroView, InstrouctionPlanView, InstrouctionStructureView, InstrouctionView, ProfileView
 
 
 urlpatterns = [
@@ -34,18 +34,10 @@ urlpatterns = [
     path('instrouction/intro',InstrouctionIntroView.as_view(), name ='intro'),
     path('instrouction/structure',InstrouctionStructureView.as_view(), name ='structure'),
     path('instrouction/plan',InstrouctionPlanView.as_view(), name ='plan'),
-
-
-
     path('assessment/', include('assessment.urls')), #평가 url
-
-
-    
-
-
-    
     path('instrouction/',include('instrouction.urls')),
 
+    path('profile/', ProfileView.as_view(), name='profile'),
     path('blog/',include('blog.urls')),
     path('board/', include('board.urls')),
     path('events/',include('events.urls')),

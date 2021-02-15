@@ -1,41 +1,56 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 
-{% block content %}
+ {% block content %}
 <style>
+
+
+    
     table{
         position : relative;
         top : 50px;
-        left : 100px;    
+        left : 100px;
+        
+
  }    
+
     .pointer{
         color:blue;
         font-weight:bold;
         text-align:left;    
     }
+
     th,td {
         color: #0d47a1;
         font-size: 16px;
         text-align : center;
+        
+
     }
+
     .btn-success{
         background-color: #00c851!important;
         float:right;
-    }    
+    }
+    
     .highlight{
         position:relative;
-        left: 50px;
+        left: 100px;
         color:#0d47a1;
-        font-size : 30px;    
+        font-size : 30px;
+        
     }
+
 </style>
 
+
+
+<div class="card">  
+    <br>
 <div class="highlight">
 <i class="fas fa-highlighter"> 성취도 평가</i>
 </div>
-
-<body>
-        
-        <div class="table"><table  style="width:100%"> <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
+    <body>        
+        <div class="table"><table border="0" style="width:80%"> <tr><th>비NCS 교과명</th> <th>수행1</th><th>수행2</th><th>필답1</th><th>필답2</th><th>태도</th><th>포트폴리오</th> </tr>
         <td div class= "pointer"> <i class="fas fa-chalkboard-teacher"></i> 인터페이스 개발 </td>
          {% for interface in user.interface_set.all %}
          <td>{{interface.performance}}</td> <td>{{interface.performance_re}}</td><td>{{interface.writing}}</td><td>{{interface.writing_re}}</td><td>{{interface.attitude}}</td><td>{{interface.Portfolio}}</td>
@@ -74,5 +89,6 @@
          </tr>
      
         </div>
+</div>    
 </body>
 {% endblock %}

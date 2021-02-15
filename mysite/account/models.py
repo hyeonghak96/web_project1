@@ -32,10 +32,10 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     email = models.EmailField(
-        verbose_name='email',
+        verbose_name='이메일',
         max_length=255,
         unique=True,)
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(verbose_name='생년월일')
     phone_number =models.CharField(max_length=255,default='')
     address = models.CharField(max_length=255,verbose_name='address',default='정보없음')
     name=models.CharField(max_length=255,default='') 

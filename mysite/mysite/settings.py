@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'instrouction',
 
     'events',
+    
+    
   
 
 
@@ -152,7 +154,7 @@ AUTH_USER_MODEL = 'account.User'
 
 
 # 로그인 관련 URL 디폴트 값
-# LOGIN_URL = '/accounts/login/' # 로그인 페이지 URL
+LOGIN_URL = '/accounts/login/' # 로그인 페이지 URL
 # LOGIN_REDIRECT_URL = '/accounts/profile' # 로그인 성공시 리다이렉트할 URL
-# LOGOUT_REDIRECT_URL = '/' # 로그 아웃시 리다이렉트할 URL
+LOGOUT_REDIRECT_URL = '/' # 로그 아웃시 리다이렉트할 URL
 LOGIN_REDIRECT_URL = '/' # 로그인 성공시 리다이렉트할 URL

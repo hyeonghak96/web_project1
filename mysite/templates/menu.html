@@ -1,4 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top mx-0 mb-0">
+<style>
+    .jumbotron{
+        background-image:url(https://cdn.ourcodeworld.com/public-media/articles/articleocw-5d07e6b3790af.jpg) ;
+        position:fixed-top;
+    }
+</style>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top mx-0 mb-0">
     <span class="navbar-brand mx-0 mb-0 font-weight-bold font-italic">
         menu </span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -28,17 +35,17 @@
                 </div>
             </li>
         </ul>
-        <!-- <form class="form-inline my-2" action="" method="post"> {% csrf_token %}
+         <form class="form-inline my-2" action="" method="post"> {% csrf_token %} 
             <input class="form-control mr-sm-2" type="search" placeholder="global search" name="search_word">
         </form>
-     -->
+     
 
         <ul class="navbar-nav ml-5 mr-5">
             <li class="nav-item dropdown mx-1 btn btn-primary">
                 {% if user.is_active %}
                 <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
                     <i class="fas fa-user"></i>
-                    {{user.username }} </a>
+                    {{user.email }} </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Logout</a>
                     <a class="dropdown-item" href="#">Change Password</a>
@@ -55,8 +62,157 @@
         </ul>    
     </div>
     
-</nav>
-<div class ="jumbotron mb-5 ">
-    <h3>E-ncs 온라인 평가 시스템</h3>
-    <strong class ="font-weight-bold float-right"><i class="fas fa-graduation-cap "></i>[디지털 핵심 실무인재양성] 프로젝트형 IOT 서비스 개발(유형2)_2차수</strong>
+</nav> -->
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+      font-family: "Lato", sans-serif;
+      
+    }
+    
+    .sidenav {
+      height: 100%;
+      width: 140px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #F5F5F5;
+      overflow-x: hidden;
+      padding-top: 20px;
+      
+    }
+    
+    .sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.active {
+  background-color: green;
+  color: black;
+}
+    
+
+    
+    .sidenav a:hover {
+      color:black;
+    }
+    
+    .main {
+      margin-left: 160px; /* Same as the width of the sidenav */
+      font-size: 28px; /* Increased text to enable scrolling */
+      padding: 0px 10px;
+    }
+    
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+    
+   
+   
+   .custom{
+       position:absolute;
+       left:1100px;
+       top:10px;
+
+   }
+    </style>
+    </head>
+    <body>
+
+        
+        <div class="sidenav"> 
+            <a href="/">Home</a>
+            <a href="/assessment/">Assessment</a>
+            <a href="/board/">Board</a>
+            <button class="dropdown-btn">Instruction
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <a href="/instrouction/intro">intro</a>
+              <a href="/instrouction/structure">structure</a>
+              <a href="/instrouction/plan">plan</a>
+            </div>
+            <a href="#contact">Search</a>
+          </div>
+
+          <script>
+            /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+            
+            for (i = 0; i < dropdown.length; i++) {
+              dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+              } else {
+              dropdownContent.style.display = "block";
+              }
+              });
+            }
+            </script>
+            
+
+            
+
+
+          
+               
+            
+
+
+
+<div class ="jumbotron mb-5 " >
+    
+    <h3 style=color:white;margin-left:200px;>E-ncs 온라인 평가 시스템</h3>
+    <strong class ="font-weight-bold float-right" style=color:white><i class="fas fa-graduation-cap "></i>[디지털 핵심 실무인재양성] 프로젝트형 IOT 서비스 개발(유형2)_2차수</strong>
+    
+    <div class="custom">
+    <ul class="font-weight-bold  nav ml-5 mr-5" >
+        <li class="nav-item dropdown btn">
+            {% if user.is_active %}
+            <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
+                <i class="fas fa-user"></i>
+                {{user.email }} </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+            </div>
+            {% else %}
+            <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
+                <i class="fas fa-user"></i>Enter</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'login'%}">Login</a>
+                <a class="dropdown-item" href="{% url 'register'%}">Register</a>
+            </div>
+        </li>
+            {% endif %}
+        </li>
+    </ul>    
+</div>
+
+</div>
+
+</nav> 
+
+
+</div>
+</div>
 </div>

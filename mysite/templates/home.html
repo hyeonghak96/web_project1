@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block title%}Home{% endblock %}
-
 
 {% block content%}
 <div class = "row">
@@ -19,7 +17,32 @@
     </div>
 </div>
 
+<style>
+    .margin{
+        position:absolute;
+        margin-left:50px;
+        width:800px;
+        opacity: 0.8;
+    }
+    
+    .margin_two{
+        position:absolute;
+        margin-left:50px;
+        margin-top:370px;
+        width:1000px;
+        opacity: 0.8;
+    }
+
+</style>
+
+   
+    <div class="card margin">
+    {% include "blog/post_all.html" %}
+</div>
+
+<div class="card margin_two">
 {% include "assessment/post_home.html" %}        
+</div>
 
 
 
