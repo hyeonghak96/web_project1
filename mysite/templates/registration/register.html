@@ -59,6 +59,13 @@
  <form action="." method="post" class="cardbody mx-auto col-md-6 pt-4">
     <div class="shadow p-3 mb-3 bg-white">
     {% csrf_token %}
+    <div class="form-group row">    
+        {{ form.name|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
+        <div class="col-sm-3">
+        {{ form.name|add_class:"form-control" }}
+        </div>
+        </div>       
+
     <div class="form-group row">
     {{ form.email| add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
     <div class="col-sm-4">

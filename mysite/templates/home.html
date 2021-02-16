@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title%}Home{% endblock %}
+{% block }
 <style>
     .margin{
         position:absolute;
@@ -10,7 +11,7 @@
     
     .margin_two{
         position:absolute;
-        margin-left:50px;
+        margin-left:30px;
         margin-top:370px;
         width:1000px;
         opacity: 0.8;
@@ -18,12 +19,15 @@
 
 </style>
 {% block content%}
+
+
 <div class = "row">
-    <div class = "col-md-9">
+    <div class = "card col-md-9" style="margin-bottom:15px ;" >
         {% include "blog/post_all.html" %}
     </div>
-            
-    <div class = "col-md-3">
+
+
+    <div class = "card col-md-3" style="margin-bottom:15px">
         <h5><a href="{% url 'events:home' %}"><i class="far fa-calendar-check"></i></i>행사 일정표</a></h5>
         <br/>
         <h3> {{year}}년 {{month_number}}월</h3>
@@ -32,6 +36,7 @@
         {{cal|safe}}<br/>
     </div>
 </div>
+
 
 <div class="card margin_two">
 {% include "assessment/post_home.html" %}        

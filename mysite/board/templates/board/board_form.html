@@ -1,74 +1,77 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
 
-{% block title %}board_form.html{% endblock %}
+{% block title %}게시글 작성{% endblock %}
+
 
 {% block content %}
-    <h1>Board Create/Update - {{user}}</h1>
-    <p class="font-italic">This is a creation or update form for your board.</p>
 
     {% if form.errors %}
     <div class="alert alert-danger">
         <div class="font-weight-bold">
-            Wrong! Please correct the error(s) below.</div>
+            에러가 난 거 같습니다. 다시 한 번 시도해주세요.</div>
         {{ form.errors }}
     </div>
     {% endif %}
 
-    <form action="." method="board" enctype="multipart/form-data" class="card pt-3">{% csrf_token %}
-        <div class="form-group row">
-            {{ form.title|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-            <div class="col-sm-5">
-                {{ form.title|add_class:"form-control"|attr:"autofocus" }}
-            </div>
+    <form action="." method="post" enctype="multipart/form-data" >{% csrf_token %}
+        <label for="files" class="font-weight-bold">제목</label>
+        <br>
+        <div class="col-sm-8">
+            {{ form.title|add_class:"form-control"|attr:"autofocus" }}
         </div>
+<br>
+        <label for="files" class="font-weight-bold">간단 설명</label>
+        <br>
+        <div class="col-sm-8">
+            {{ form.description|add_class:"form-control" }}
+        </div>
+<br>
 
-        <div class="form-group row">
-            {{ form.description|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-            <div class="col-sm-5">
-                {{ form.description|add_class:"form-control" }}
-            </div>
-            <small class="form-text text-muted">
-                {{ form.description.help_text }}</small>
-        </div>
-        <div class="form-group row">
-            <label for="files" class="col-form-label col-sm-2 ml-3 font-weight-bold">첨부 파일 :</label>
-            <div class="col-sm-8 ">
-                <input type="file" id="files" name="files" multiple>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="files" class="col-form-label col-sm-2 ml-3 font-weight-bold">
-                삭제할 파일 :</label>
-            <div class="col-sm-8 ">
-                {% for file in board.files.all %}
-                <input type="checkbox" name="delete_files" value="{{file.id}}">
-                {{file.filename}} ({{file.size | filesizeformat}})
-                <br>
-                {%endfor %}
-            </div>
-        </div>
-        <div class="form-group row">
-            {{ form.content|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-            <div class="col-sm-8">
-                {{ form.content|add_class:"form-control" }}
-            </div>
-        </div>
+<div class="form-group row", style="float:right;">
+    <label for="files" class="font-weight-bold">첨부 파일: </label>&nbsp;
+    <div>
+        <input type="file" id="files" name="files" multiple>
+    </div>
+</div>
 
-        <div class="form-group row">
-            {{ form.tags|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-            <div class="col-sm-5">
-                {{ form.tags|add_class:"form-control" }}
-            </div>
-            <small class="form-text text-muted">{{ form.tags.help_text }}</small>
-        </div>
-        <div class="form-group">
-            <div class="offset-sm-2 col-sm-5">
-                <input type="submit" value="Submit" class="btn btn-info" />
-            </div>
-        </div>
+<br>
 
-    </form>
+        <label for="files" class="font-weight-bold">내용</label>
+        <br>
+        <div>
+            {{ form.content|add_class:"form-control" }}
+        </div>
+<br>
+    <div class="form-group row">
+        {{ form.tags|add_label_class:"font-weight-bold" }}
+        <div class="col-sm-4">
+            {{ form.tags|add_class:"form-control" }}
+        </div>
+    </div>
+
+
+    
+    <div class="form-group row">
+        <div class="col-sm-8 ">
+            {% for file in board.files.all %}
+            <input type="checkbox" name="delete_files" value="{{file.id}}">
+            {{file.filename}} ({{file.size | filesizeformat}})
+            <br>
+            {%endfor %}
+        </div>
+    </div>
+
+<br>
+
+<div class="form-group">
+    <div>
+        <button type="submit"  class="btn btn-muted">글 등록</button>
+        <button type="button" class="btn btn-muted" style = "float:right;" onclick="location.href = '/board/'">돌아가기</button>
+    </div>
+</div>
+</form>
+
 
 {% endblock %}
 

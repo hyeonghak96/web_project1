@@ -1,0 +1,33 @@
+<head>
+    <style>
+        @font-face {
+                font-family: 'Pangolin';
+                src: url("font/Pangolin-Regular.ttf") format("opentype");
+        }
+
+        body{
+            background-image: url('http://v3wall.com/wallpaper/1920_1080/1006/1920_1080_20100605092402139801.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+
+    </style>
+
+</head>
+<body>
+{% extends "base.html" %}
+{% block title %}게시글 삭제하기{% endblock %}
+{% block content %}
+
+    <h1>게시글 삭제</h1>
+    <br>
+
+    <form action="." method="post">{% csrf_token %}
+        <p>정말 "{{ object }}" 을 삭제하시겠습니까?</p>
+
+        <button type="submit"  class="btn btn-success">예</button>
+        <button type="button" class="btn btn-success" onclick="location.href = '/board/'">아니오</button>
+    </form>
+
+{% endblock %}
+</body>

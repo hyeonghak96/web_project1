@@ -13,7 +13,7 @@ urlpatterns = [
     path('search/', SearchFormView.as_view(), name='search'),
     path('add/', BoardCreateView.as_view(), name='add'),
     path('<int:pk>/update/', BoardUpdateView.as_view(), name='update'),
-    path('<int:pk>/delete', BoardDeleteView.as_view(), name='delete'),
+    path('<int:pk>/delete/', BoardDeleteView.as_view(), name='delete'),
     path('download/<int:id>', download, name='download'),
     path('comment/<int:id>', BoardDV.as_view(), name="comment"),
 
